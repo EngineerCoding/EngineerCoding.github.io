@@ -1,0 +1,17 @@
+
+.stx-dark {
+	color: white;
+}
+
+.stx-dark .back, .stx-dark.back {
+	background-color: #404040;
+}
+
+.stx-dark .stx-cnst {
+	color: #FD9621;
+}
+
+.stx-dark .stx-path {
+	color: #67D8EF;
+}
+

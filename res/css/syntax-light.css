@@ -1,0 +1,16 @@
+
+.stx-light {
+	color: black;
+}
+
+.stx-light .back, .stx-light.back {
+	background-color: #EAEAEA;
+}
+
+.stx-light .stx-cnst {
+	color: #C695C6;
+}
+
+.stx-light .stx-path {
+	color: #6699CC;
+}
