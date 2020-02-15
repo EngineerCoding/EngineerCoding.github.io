@@ -36,6 +36,9 @@ main .scalable-font {
 }
 
 .socials-container > #logo {
+    display: block;
+    width: 16vw;
+
     transform: translateY(40%);
     z-index: 1;
 }
