@@ -113,8 +113,12 @@ main {
     flex-direction: row;
 }
 
-.tm-0 {
+.tm-0, .my-0 {
     margin-top: 0;
+}
+
+.bm-0, .my-0 {
+    margin-bottom: 0;
 }
 
 /** footer **/
