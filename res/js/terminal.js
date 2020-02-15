@@ -365,7 +365,12 @@ var getTerminal = (function() {
 
 		obj.element = document.createElement("div");
 		obj.element.classList.add("terminal");
-		obj.element.classList.add("stx-dark");
+		
+		var theme = "dark";
+		if (typeof window.currentTheme !== "undefined") {
+			theme = window.currentTheme;
+		}
+		obj.element.classList.add("stx-" + theme);
 
 		var toolbar = document.createElement("div");
 		var _cachedComputedProperties;
