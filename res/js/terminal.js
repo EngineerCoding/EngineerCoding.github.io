@@ -437,6 +437,7 @@ var getTerminal = (function() {
 					event.preventDefault();
 					this.attemptTabCompletion();
 				} else if (event.keyCode == 13) { /* enter */
+					event.preventDefault();
 					this.executeCommand();
 					this.commandHistoryIndex = this.commandHistory.length;
 				} else if (event.keyCode == 32) { /* space bar */ 
