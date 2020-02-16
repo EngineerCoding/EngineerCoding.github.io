@@ -145,16 +145,22 @@
                 return valueStr;
             }
 
+            var intervalId = null;
             function showDiff() {
                 var diff = targetDate - (new Date());
-                daysComponent.innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-                hoursComponent.innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                if (diff < 0) {
+                    diff = 0;
+                    clearInterval(intervalId);
+                }
+
+                daysComponent.innerText = pad(Math.floor(diff / (1000 * 60 * 60 * 24)));
+                hoursComponent.innerText = pad(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
                 minutesComponent.innerText = pad(Math.floor((diff % (1000 * 60 * 60 )) / (1000 * 60)));
                 secondsComponent.innerText = pad(Math.floor((diff % (1000 * 60)) / 1000));
             }
 
+            intervalId = setInterval(showDiff, 1000);
             showDiff();
-            setInterval(showDiff, 1000);
         </script>
     </body>
 </html>
