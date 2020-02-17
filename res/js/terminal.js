@@ -658,10 +658,10 @@ var getTerminal = (function() {
 		var created = false;
 
 		if (!event) {
-			event = { ctrlKey: true, altKey: true, code: "KeyT" };
+			event = { altKey: true, code: "KeyT" };
 		}
 
-		if ((!terminal || terminal.destroyed) && event.ctrlKey && event.altKey && event.code == "KeyT") {
+		if ((!terminal || terminal.destroyed) && event.altKey && event.code == "KeyT") {
 			var keypressListener = function(event) {
 				terminal.onKeyPress(event);
 			};
