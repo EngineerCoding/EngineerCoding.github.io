@@ -454,7 +454,7 @@ var getTerminal = (function() {
 						currentCommandContainer.innerText = this.commandHistory[this.commandHistoryIndex].original;
 					}
 				} else if (event.keyCode == 40) { /* arrow down */ 
-					event.preventDefault();cd 
+					event.preventDefault();
 					if (this.commandHistoryIndex != this.commandHistory.length) {
 						this.commandHistoryIndex += 1;
 						if (this.commandHistoryIndex == this.commandHistory.length) {
@@ -626,6 +626,29 @@ var getTerminal = (function() {
 			destroyedHandlers.forEach(function(handler) { handler(); });
 		}
 
+		// Add an input for mobile devices
+		var mobileInput = document.createElement("input");
+		mobileInput.setAttribute("type", "text");
+
+		commandContainer.addEventListener("click", function(event) {
+			mobileInput.focus();
+		});
+
+		var previousLength = 0;
+		mobileInput.addEventListener("input", function(event) {
+			if (previousLength == this.value.length) {
+				return;
+			}
+			previousLength = this.value.length;
+			var key = this.value[this.value.length - 1];
+			if (key.length === 1) {
+				event.preventDefault();
+				var code = key.charCodeAt(0);
+				terminal.onKeyPress({ keyCode: code, key: key });
+			}
+		});
+
+		obj.element.appendChild(mobileInput);
 		obj.setupNewCommand();
 		return obj;
 	}
