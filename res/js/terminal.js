@@ -86,7 +86,7 @@ var getTerminal = (function() {
 			{ path: "/home/guest/res/css/syntax-dark.css", type: "external", href: "/res/css/syntax-dark.css" },
 			{ path: "/home/guest/res/css/syntax-light.css", type: "external", href: "/res/css/syntax-light.css" },
 			{ path: "/home/guest/res/js/terminal.js", type: "external", href: "/res/js/terminal.js" },
-			{ path: "/home/guest/res/js/nav.js", type: "external", href: "/res/js/nav.js" },			
+			{ path: "/home/guest/res/js/nav.js", type: "external", href: "/res/js/nav.js" },
 			{ path: "/home/guest/res/fonts/edlo.ttf", type: "external", href: "/res/fonts/edlo.ttf" },
 		];
 
@@ -97,13 +97,13 @@ var getTerminal = (function() {
 			files.forEach(function(file, idx) {
 				var pathComponents = file.path.split("/");
 				pathComponents.splice(0, 1);
-				
+
 				var final = pathComponents.splice(pathComponents.length - 1, 1);
 				// build the directory structure
 				var base = structure;
 				pathComponents.forEach(function(directory) {
 					if (typeof base[directory] === "undefined") {
-						base[directory] = {};						
+						base[directory] = {};
 					}
 					base = base[directory];
 				});
@@ -308,7 +308,7 @@ var getTerminal = (function() {
 
 	var parseCommand = function(commandText) {
 		commandText = commandText.trim();
-		
+
 		var openingArgument = null;
 		var previousBackslash = false;
 
@@ -365,7 +365,7 @@ var getTerminal = (function() {
 
 		obj.element = document.createElement("div");
 		obj.element.classList.add("terminal");
-		
+
 		var theme = "dark";
 		if (typeof window.currentTheme !== "undefined") {
 			theme = window.currentTheme;
@@ -445,7 +445,7 @@ var getTerminal = (function() {
 					event.preventDefault();
 					this.executeCommand();
 					this.commandHistoryIndex = this.commandHistory.length;
-				} else if (event.keyCode == 32) { /* space bar */ 
+				} else if (event.keyCode == 32) { /* space bar */
 					currentCommandContainer.innerHTML += "&nbsp;";
 				} else if (event.keyCode == 38) { /* arrow up */
 					event.preventDefault();
@@ -453,7 +453,7 @@ var getTerminal = (function() {
 						this.commandHistoryIndex = this.commandHistoryIndex - 1;
 						currentCommandContainer.innerText = this.commandHistory[this.commandHistoryIndex].original;
 					}
-				} else if (event.keyCode == 40) { /* arrow down */ 
+				} else if (event.keyCode == 40) { /* arrow down */
 					event.preventDefault();
 					if (this.commandHistoryIndex != this.commandHistory.length) {
 						this.commandHistoryIndex += 1;
@@ -513,7 +513,7 @@ var getTerminal = (function() {
 						var completeTo = null;
 						if (matchingKeys.length > 0) {
 							completeTo = matchingKeys[0];
-						} 
+						}
 						if (matchingKeys.length > 1) {
 							matchingKeys.splice(0, 1);
 							completeTo = matchingKeys.reduce(function(currentOverlap, key) {
@@ -578,7 +578,7 @@ var getTerminal = (function() {
 
 		obj.executeCommand = function(dontStore) {
 			commandContainer.appendChild(document.createElement("br"));
-			
+
 			var commandData = parseCommand(currentCommandContainer.innerText);
 			if (!commandData.empty) {
 				var childrenCount = commandContainer.childNodes.length;
@@ -610,7 +610,7 @@ var getTerminal = (function() {
 		}
 
 		obj.addOnDestroyedHandler = function(handler) {
-			destroyedHandlers.push(handler);			
+			destroyedHandlers.push(handler);
 		}
 
 		obj.destroy = function() {
@@ -630,7 +630,7 @@ var getTerminal = (function() {
 		var mobileInput = document.createElement("input");
 		mobileInput.setAttribute("type", "text");
 
-		commandContainer.addEventListener("click", function(event) {
+		commandContainer.addEventListener("touchmove", function(event) {
 			mobileInput.focus();
 		});
 
@@ -639,13 +639,20 @@ var getTerminal = (function() {
 			if (previousLength == this.value.length) {
 				return;
 			}
-			previousLength = this.value.length;
-			var key = this.value[this.value.length - 1];
-			if (key.length === 1) {
-				event.preventDefault();
-				var code = key.charCodeAt(0);
-				terminal.onKeyPress({ keyCode: code, key: key });
+
+			event.preventDefault();
+
+			var code;
+			var key = "";
+			if (previousLength > this.value.length) {
+				code = 8; /* backspace */
+			} else {
+				key = this.value[this.value.length - 1];
+				code = key.charCodeAt(0);
 			}
+
+			previousLength = this.value.length;
+			terminal.onKeyPress({ keyCode: code, key: key });
 		});
 
 		obj.element.appendChild(mobileInput);
