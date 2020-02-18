@@ -79,10 +79,10 @@ var getTerminal = (function() {
 			/*{ path: "/home/guest/career.html", type: "link", href: "/career.html" },
 			{ path: "/home/guest/blog.html", type: "link", href: "/blog.html" },
 			{ path: "/home/guest/contact.html", type: "link", href: "/contact.html" },*/
-			{ path: "/home/guest/login.html", type: "link", href: "/login.html" },
-			{ path: "/home/guest/res/css/main.css", type: "external", href: "/res/css/main.css" },
 			{ path: "/home/guest/res/css/layout.css", type: "external", href: "/res/css/layout.css" },
-			{ path: "/home/guest/res/css/terminal.css", type: "external", href: "/res/css/terminal.css" },
+			{ path: "/home/guest/res/css/pages/index.css", type: "external", href: "/res/css/pages/index.css" },
+			{ path: "/home/guest/res/css/page-layouts/centered-component.css", type: "external", href: "/res/css/page-layouts/centered-component.css" },
+			{ path: "/home/guest/res/css/components/terminal.css", type: "external", href: "/res/css/components/terminal.css" },
 			{ path: "/home/guest/res/css/syntax-dark.css", type: "external", href: "/res/css/syntax-dark.css" },
 			{ path: "/home/guest/res/css/syntax-light.css", type: "external", href: "/res/css/syntax-light.css" },
 			{ path: "/home/guest/res/js/terminal.js", type: "external", href: "/res/js/terminal.js" },
@@ -415,7 +415,7 @@ var getTerminal = (function() {
 
 		// Load the css and add the element to the DOM
 		Promise.all([
-			addCss("/res/css/terminal.css"),
+			addCss("/res/css/components/terminal.css"),
 			addCss("https://fonts.googleapis.com/icon?family=Material+Icons", true)
 		]).then(function() {
 			parentElement.appendChild(obj.element);
