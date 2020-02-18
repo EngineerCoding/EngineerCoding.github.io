@@ -13,6 +13,7 @@
 
 	{ "path": "/home/guest/res/css/components/terminal.css", "type": "external", "href": "/res/css/components/terminal.css" },
 	{ "path": "/home/guest/res/css/pages/index.css", "type": "external", "href": "/res/css/pages/index.css" },
+	{ "path": "/home/guest/res/css/pages/fluffy-timer.css", "type": "external", "href": "/res/css/pages/fluffy-timer.css" },
 	{ "path": "/home/guest/res/css/page-layouts/centered-component.css", "type": "external", "href": "/res/css/page-layouts/centered-component.css" },
 
 	{ "path": "/home/guest/res/data/data.json", "type": "external", "href": "/res/js/data.json" },

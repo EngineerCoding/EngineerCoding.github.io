@@ -1,5 +1,5 @@
 var getTerminal = (function() {
-	var addCss = function(cssUrl, excludeType) {
+	var addCss = function(cssUrl) {
 		var links = document.head.querySelectorAll("link[type=\"text/css\"]");
 		for (var i = 0; i < links.length; i++) {
 			if (links[i].getAttribute("href") == cssUrl) {
@@ -11,9 +11,7 @@ var getTerminal = (function() {
 
 		return new Promise(function(resolve, reject) {
 			var link = document.createElement("link");
-			if (!excludeType) {
-				link.setAttribute("type", "text/css");
-			}
+			link.setAttribute("type", "text/css");
 			link.setAttribute("rel", "stylesheet");
 			link.setAttribute("href", cssUrl);
 			link.addEventListener("load", function(event) {
@@ -404,7 +402,7 @@ var getTerminal = (function() {
 		// Load the css and add the element to the DOM
 		Promise.all([
 			addCss("/res/css/components/terminal.css"),
-			addCss("https://fonts.googleapis.com/icon?family=Material+Icons", true),
+			addCss("https://fonts.googleapis.com/icon?family=Material+Icons"),
 			obj.fs.getInitializationPromise()
 		]).then(function() {
 			parentElement.appendChild(obj.element);
