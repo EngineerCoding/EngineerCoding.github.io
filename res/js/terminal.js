@@ -73,48 +73,36 @@ var getTerminal = (function() {
 		var obj = {}
 
 		var displayPath = getFromPersistence("path", "~", false);
-		var files = [
-			{ path: "/home/guest/index.html", type: "link", href: "/index.html" },
-			{ path: "/home/guest/fluffy-timer.html", type: "link", href: "/fluffy-timer.html" },
-			/*{ path: "/home/guest/career.html", type: "link", href: "/career.html" },
-			{ path: "/home/guest/blog.html", type: "link", href: "/blog.html" },
-			{ path: "/home/guest/contact.html", type: "link", href: "/contact.html" },*/
-			{ path: "/home/guest/res/css/layout.css", type: "external", href: "/res/css/layout.css" },
-			{ path: "/home/guest/res/css/pages/index.css", type: "external", href: "/res/css/pages/index.css" },
-			{ path: "/home/guest/res/css/page-layouts/centered-component.css", type: "external", href: "/res/css/page-layouts/centered-component.css" },
-			{ path: "/home/guest/res/css/components/terminal.css", type: "external", href: "/res/css/components/terminal.css" },
-			{ path: "/home/guest/res/css/syntax-dark.css", type: "external", href: "/res/css/syntax-dark.css" },
-			{ path: "/home/guest/res/css/syntax-light.css", type: "external", href: "/res/css/syntax-light.css" },
-			{ path: "/home/guest/res/js/terminal.js", type: "external", href: "/res/js/terminal.js" },
-			{ path: "/home/guest/res/js/nav.js", type: "external", href: "/res/js/nav.js" },
-			{ path: "/home/guest/res/fonts/edlo.ttf", type: "external", href: "/res/fonts/edlo.ttf" },
-		];
+		var files = [];
+		var structure = {};
 
-		// build directory structure
-		var structure = (function() {
-			var structure = {};
+		obj.getInitializationPromise = function() {
+			return fetch("/res/data/files.json")
+				.then(function(response) {
+					return response.json();
+				})
+				.then(function(fileData) {
+					files = fileData;
+					files.forEach(function(file, idx) {
+						var pathComponents = file.path.split("/");
+						pathComponents.splice(0, 1);
 
-			files.forEach(function(file, idx) {
-				var pathComponents = file.path.split("/");
-				pathComponents.splice(0, 1);
-
-				var final = pathComponents.splice(pathComponents.length - 1, 1);
-				// build the directory structure
-				var base = structure;
-				pathComponents.forEach(function(directory) {
-					if (typeof base[directory] === "undefined") {
-						base[directory] = {};
-					}
-					base = base[directory];
-				});
-				// add the file if final is not empty
-				if (final.length != 0) {
-					base[final] = idx;
-				}
-			});
-
-			return structure;
-		})();
+						var final = pathComponents.splice(pathComponents.length - 1, 1);
+						// build the directory structure
+						var base = structure;
+						pathComponents.forEach(function(directory) {
+							if (typeof base[directory] === "undefined") {
+								base[directory] = {};
+							}
+							base = base[directory];
+						});
+						// add the file if final is not empty
+						if (final.length != 0) {
+							base[final] = idx;
+						}
+					});
+				})
+		}
 
 		obj.getCurrentPath = function() {
 			return displayPath;
@@ -416,7 +404,8 @@ var getTerminal = (function() {
 		// Load the css and add the element to the DOM
 		Promise.all([
 			addCss("/res/css/components/terminal.css"),
-			addCss("https://fonts.googleapis.com/icon?family=Material+Icons", true)
+			addCss("https://fonts.googleapis.com/icon?family=Material+Icons", true),
+			obj.fs.getInitializationPromise()
 		]).then(function() {
 			parentElement.appendChild(obj.element);
 		});

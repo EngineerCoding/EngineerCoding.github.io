@@ -1,0 +1,23 @@
+[
+	{ "path": "/home/guest/index.html", "type": "link", "href": "/index.html" },
+	{ "path": "/home/guest/fluffy-timer.html", "type": "link", "href": "/fluffy-timer.html" },
+	{ "path": "/home/guest/career.html", "type": "link", "href": "/career.html" },
+	{ "path": "/home/guest/blog.html", "type": "link", "href": "/blog.html" },
+	{ "path": "/home/guest/contact.html", "type": "link", "href": "/contact.html" },
+
+	{ "path": "/home/guest/res/fonts/edlo.ttf", "type": "external", "href": "/res/fonts/edlo.ttf" },
+
+	{ "path": "/home/guest/res/css/layout.css", "type": "external", "href": "/res/css/layout.css" },
+	{ "path": "/home/guest/res/css/syntax-dark.css", "type": "external", "href": "/res/css/syntax-dark.css" },
+	{ "path": "/home/guest/res/css/syntax-light.css", "type": "external", "href": "/res/css/syntax-light.css" },
+
+	{ "path": "/home/guest/res/css/components/terminal.css", "type": "external", "href": "/res/css/components/terminal.css" },
+	{ "path": "/home/guest/res/css/pages/index.css", "type": "external", "href": "/res/css/pages/index.css" },
+	{ "path": "/home/guest/res/css/page-layouts/centered-component.css", "type": "external", "href": "/res/css/page-layouts/centered-component.css" },
+
+	{ "path": "/home/guest/res/data/data.json", "type": "external", "href": "/res/js/data.json" },
+
+	{ "path": "/home/guest/res/js/nav.js", "type": "external", "href": "/res/js/nav.js" },
+	{ "path": "/home/guest/res/js/terminal.js", "type": "external", "href": "/res/js/terminal.js" },
+	{ "path": "/home/guest/res/js/theme-switcher.js", "type": "external", "href": "/res/js/theme-switcher.js" }
+]
