@@ -486,12 +486,17 @@ var getTerminal = (function() {
 				var commandData = parseCommand(text);
 				if (commandData.arguments.length > 0) {
 					// assuming this looks like a path
-					var pathComponents = commandData.arguments[
-						commandData.arguments.length - 1].split("/");
+					var path = commandData.arguments[commandData.arguments.length - 1];
+					var pathComponents = path.split("/");
 					var lookStartsWith = pathComponents[pathComponents.length - 1];
 					pathComponents.splice(pathComponents.length - 1, 1);
 
-					var directoryPath = this.fs.normalize(pathComponents.join("/"));
+					var rebuiltPath = pathComponents.join("/");
+					if (path.startsWith("/")) {
+						rebuiltPath = "/" + rebuiltPath;
+					}
+
+					var directoryPath = this.fs.normalize(rebuiltPath);
 					var pathObject = this.fs.getObject(directoryPath);
 
 					if (typeof pathObject === "object") {
