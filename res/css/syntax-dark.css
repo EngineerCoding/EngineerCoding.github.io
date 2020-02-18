@@ -1,6 +1,8 @@
 
 .stx-dark {
 	color: white;
+	transition: background-color ease-in-out 0.2s,
+	            color ease-in-out 0.2s;
 }
 
 .stx-dark .back, .stx-dark.back {
@@ -14,4 +16,3 @@
 .stx-dark .stx-path {
 	color: #67D8EF;
 }
-

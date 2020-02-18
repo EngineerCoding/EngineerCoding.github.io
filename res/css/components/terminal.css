@@ -10,7 +10,7 @@
 	height: 350px;
 	width: 100%;
 
-	transition: ease-in-out 1s;
+	transition: height ease-in-out 1s;
 }
 
 .terminal.stx-dark {

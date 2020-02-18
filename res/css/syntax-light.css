@@ -1,6 +1,8 @@
 
 .stx-light {
 	color: black;
+	transition: background-color ease-in-out 0.2s,
+	            color ease-in-out 0.2s;
 }
 
 .stx-light .back, .stx-light.back {

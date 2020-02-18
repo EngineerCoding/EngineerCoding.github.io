@@ -54,7 +54,7 @@ nav {
     z-index: 3;
     position: absolute;
     transition: padding-right 100ms;
-    
+
     background-color: grey;
 }
 
@@ -65,7 +65,7 @@ nav > ul {
 }
 
 nav > ul > li {
-    font-family: edlo, Courier new, Courier, monospace; 
+    font-family: edlo, Courier new, Courier, monospace;
 }
 
 nav > ul > li.current-path::after {
