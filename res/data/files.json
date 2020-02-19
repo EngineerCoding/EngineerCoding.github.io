@@ -4,6 +4,7 @@
 	{ "path": "/home/guest/career.html", "type": "link", "href": "/career.html" },
 	{ "path": "/home/guest/blog.html", "type": "link", "href": "/blog.html" },
 	{ "path": "/home/guest/contact.html", "type": "link", "href": "/contact.html" },
+	{ "path": "/home/guest/404.html", "type": "link", "href": "/404.html" },
 
 	{ "path": "/home/guest/res/fonts/edlo.ttf", "type": "external", "href": "/res/fonts/edlo.ttf" },
 
@@ -14,6 +15,7 @@
 	{ "path": "/home/guest/res/css/components/terminal.css", "type": "external", "href": "/res/css/components/terminal.css" },
 	{ "path": "/home/guest/res/css/pages/index.css", "type": "external", "href": "/res/css/pages/index.css" },
 	{ "path": "/home/guest/res/css/pages/fluffy-timer.css", "type": "external", "href": "/res/css/pages/fluffy-timer.css" },
+	{ "path": "/home/guest/res/css/pages/404.css", "type": "external", "href": "/res/css/pages/404.css" },
 	{ "path": "/home/guest/res/css/page-layouts/centered-component.css", "type": "external", "href": "/res/css/page-layouts/centered-component.css" },
 
 	{ "path": "/home/guest/res/data/data.json", "type": "external", "href": "/res/js/data.json" },

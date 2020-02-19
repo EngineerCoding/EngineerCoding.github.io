@@ -1,0 +1,48 @@
+
+main div, .copyright {
+	z-index: 2;
+}
+
+main .top-header {
+	font-size: 8em;
+}
+
+main .middle-header {
+	font-size: 2.6em;
+}
+
+main .bottom-header {
+	font-size: 0.925em;
+}
+
+main.stx-dark pre {
+	color: #e0e0e0;
+}
+
+main pre {
+	white-space: pre-wrap;
+
+	position: fixed;
+	top: 30px;
+	left: 0;
+
+	z-index: 1;
+}
+
+main pre .info {
+	color: green;
+}
+
+main pre .fail {
+	color: red;
+}
+
+main pre .link {
+	color: #00B6E3;
+}
+
+@media (max-width: 450px) {
+	main pre {
+		display: none;
+	}
+}
