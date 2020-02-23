@@ -4,7 +4,7 @@ body, html {
 	height: 100%;
 }
 
-main {
+.centered-component {
     display: flex;
     justify-content: center;
     align-items: center;

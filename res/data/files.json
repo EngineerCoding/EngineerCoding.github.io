@@ -20,6 +20,7 @@
 
 	{ "path": "/home/guest/res/data/data.json", "type": "external", "href": "/res/js/data.json" },
 
+	{ "path": "/home/guest/res/js/generic.js", "type": "external", "href": "/res/js/generic.js" },
 	{ "path": "/home/guest/res/js/nav.js", "type": "external", "href": "/res/js/nav.js" },
 	{ "path": "/home/guest/res/js/terminal.js", "type": "external", "href": "/res/js/terminal.js" },
 	{ "path": "/home/guest/res/js/theme-switcher.js", "type": "external", "href": "/res/js/theme-switcher.js" }

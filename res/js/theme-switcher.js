@@ -10,7 +10,6 @@
 	}
 
 	var switcherElement = document.querySelector("header");
-	switcherElement.style.display = "block";
 
 	function toggleTheme() {
 		var lightToDark = getReplaceThemeAction(".stx-light", "stx-light", "stx-dark");
