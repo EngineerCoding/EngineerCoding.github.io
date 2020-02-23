@@ -19,7 +19,7 @@
 	{ "path": "/home/guest/res/css/pages/404.css", "type": "external", "href": "/res/css/pages/404.css" },
 	{ "path": "/home/guest/res/css/page-layouts/centered-component.css", "type": "external", "href": "/res/css/page-layouts/centered-component.css" },
 
-	{ "path": "/home/guest/res/data/data.json", "type": "external", "href": "/res/js/data.json" },
+	{ "path": "/home/guest/res/data/data/files.json", "type": "external", "href": "/res/js/data/files.json" },
 
 	{ "path": "/home/guest/res/js/generic.js", "type": "external", "href": "/res/js/generic.js" },
 	{ "path": "/home/guest/res/js/nav.js", "type": "external", "href": "/res/js/nav.js" },
