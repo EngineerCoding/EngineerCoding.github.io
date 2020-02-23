@@ -1,5 +1,5 @@
 (function() {
-	var navCheckbox = document.getElementById("nav-button"); 
+	var navCheckbox = document.getElementById("nav-button");
 	navCheckbox.addEventListener("click", function(event) {
         event.preventDefault();
         var input = this;
