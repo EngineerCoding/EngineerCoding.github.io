@@ -85,11 +85,6 @@ nav > ul > li:not(.current-path) {
     margin-bottom: 0.5em;
 }
 
-nav > ul > li a {
-    color: inherit;
-    text-decoration: none;
-}
-
 .css-button-action-hack:not(:checked) + label + nav {
     width : 0;
     padding: 0;
@@ -179,6 +174,11 @@ main {
 
 /** misc **/
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
 .enable-js {
     display: none;
 }
@@ -193,6 +193,10 @@ main {
 
 .scalable-font {
     font-size: 0.5em;
+}
+
+.center-text {
+    text-align: center;
 }
 
 @media (min-width: 450px) {
