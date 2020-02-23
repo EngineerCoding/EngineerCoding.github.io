@@ -13,6 +13,7 @@
 	{ "path": "/home/guest/res/css/syntax-light.css", "type": "external", "href": "/res/css/syntax-light.css" },
 
 	{ "path": "/home/guest/res/css/components/terminal.css", "type": "external", "href": "/res/css/components/terminal.css" },
+	{ "path": "/home/guest/res/css/pages/blog.css", "type": "external", "href": "/res/css/pages/blog.css" },
 	{ "path": "/home/guest/res/css/pages/index.css", "type": "external", "href": "/res/css/pages/index.css" },
 	{ "path": "/home/guest/res/css/pages/fluffy-timer.css", "type": "external", "href": "/res/css/pages/fluffy-timer.css" },
 	{ "path": "/home/guest/res/css/pages/404.css", "type": "external", "href": "/res/css/pages/404.css" },
