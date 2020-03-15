@@ -54,7 +54,7 @@ nav {
     padding: 10px;
     height: 100%;
 
-    z-index: 3;
+    z-index: 100;
     position: absolute;
     transition: padding-right 100ms;
 
@@ -192,6 +192,10 @@ a {
 
 .no-pointer-events {
     pointer-events: none;
+}
+
+.default-font {
+    font-family: edlo, Courier new, Courier, monospace;
 }
 
 .scalable-font {
