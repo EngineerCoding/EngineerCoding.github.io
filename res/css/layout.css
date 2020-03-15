@@ -39,7 +39,7 @@ header {
 .css-button-action-hack:checked + label {
     cursor: initial;
 
-    z-index: 2;
+    z-index: 99;
     position: fixed;
     width: 100%;
     height: 100%;

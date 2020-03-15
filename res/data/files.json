@@ -13,6 +13,7 @@
 	{ "path": "/home/guest/res/css/syntax-light.css", "type": "external", "href": "/res/css/syntax-light.css" },
 
 	{ "path": "/home/guest/res/css/components/card.css", "type": "external", "href": "/res/css/components/card.css" },
+	{ "path": "/home/guest/res/css/components/loading.css", "type": "external", "href": "/res/css/components/loading.css" },
 	{ "path": "/home/guest/res/css/components/terminal.css", "type": "external", "href": "/res/css/components/terminal.css" },
 	{ "path": "/home/guest/res/css/pages/blog.css", "type": "external", "href": "/res/css/pages/blog.css" },
 	{ "path": "/home/guest/res/css/pages/index.css", "type": "external", "href": "/res/css/pages/index.css" },
