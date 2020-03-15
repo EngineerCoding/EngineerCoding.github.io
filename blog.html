@@ -8,6 +8,8 @@
 
         <link type="text/css" rel="stylesheet" href="/res/css/layout.css" />
         <link type="text/css" rel="stylesheet" href="/res/css/page-layouts/centered-component.css" />
+        <link type="text/css" rel="stylesheet" href="/res/css/page-layouts/items-component.css" />
+        <link type="text/css" rel="stylesheet" href="/res/css/components/card.css" />
         <link type="text/css" rel="stylesheet" href="/res/css/pages/blog.css" />
         <link type="text/css" rel="stylesheet" href="/res/css/syntax-light.css" />
         <link type="text/css" rel="stylesheet" href="/res/css/syntax-dark.css" />
@@ -20,8 +22,24 @@
         <script type="text/javascript" src="/res/js/terminal.js" defer></script>
         <script type="text/javascript" src="/res/js/nav.js" defer></script>
         <script type="text/javascript" src="/res/js/theme-switcher.js" defer></script>
+        <script type="text/javascript" src="/res/js/template-loader.js" defer></script>
+        <script type="text/javascript" src="/res/js/blog.js" defer></script>
     </head>
     <body>
+        <template id="card">
+            <div class="stx-light card back scalable-font" style="cursor: pointer;">
+                <div class="card-banner">
+                   <img src="{{ card-image-source }}" />
+                </div>
+                <div class="card-meta">
+                    <span>{{ card-metadata }}</span>
+                </div>
+                <div class="card-title">
+                    <h3>{{ card-title }}</h3>
+                </div>
+            </div>
+        </template>
+
         <header class="enable-js">
             <div class="stx-dark pointer icon-font">
                 <i class="fa fa-sun-o"></i>
@@ -53,10 +71,8 @@
             </div>
         </noscript>
 
-        <main class="stx-dark back enable-js centered-component">
-            <div class="scalable-font">
-                <h1 class="my-0" style="font-size: 5em;">No content yet</h1>
-            </div>
+        <main class="stx-dark back enable-js items-component">
+
         </main>
 
         <footer class="stx-dark">
@@ -64,15 +80,6 @@
                 <span>Copyright &copy; <span id="copyright-year">2020</span> Wesley Ameling</span>
             </div>
             <div class="socials-container sticky-bottom">
-                <svg id="logo" viewBox="0 0 102.71 115.5" xmlns="http://www.w3.org/2000/svg" class="no-pointer-events">
-                    <defs>
-                        <style>.b{fill:none;}.b,.a{stroke:#fff;}.a{fill:#404040;}</style>
-                    </defs>
-                    <g>
-                        <path class="a" id="logo-path-a" d="M.5,1.26c.64,65,3.31,67.79,6.58,68,4,.21,8.44-33.77,12.76-33.38,4.15.38,2.68,34,6.21,34.38,3.05.35,6.07-4.85,17.46-69.46"/>
-                        <path class="b" id="logo-path-b" d="M24.34,48.31c56.28-20.66,73.92-14.16,77.22-.94,5.43,21.77-24.47,75.88-37.83,66.56C47.77,102.8,55,.81,50.6.5c-2.35-.17-2.13,29-14.18,51.56C31.5,61.28,26,66.64,21.71,69.87"/>
-                    </g>
-                </svg>
                 <a href="https://github.com/EngineerCoding" class="social-logo github" target="_blank" rel="noopener">
                     <i class="fa fa-github"></i>
                 </a>

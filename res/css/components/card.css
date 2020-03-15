@@ -1,0 +1,44 @@
+
+.card {
+	margin: 10px;
+	z-index: 2;
+}
+
+.card,
+.card .card-banner,
+.card .card-banner img,
+.card .card-meta,
+.card .card-title {
+	max-width: 440px;
+}
+
+.card .card-banner, .card .card-banner img {
+	margin: auto;
+	display: block;
+}
+
+.card .card-banner img {
+	max-height: 450px;
+}
+
+.card .card-meta {
+	text-align: right;
+}
+
+.card .card-title {
+	text-align: center;
+}
+
+.card .card-meta, .card .card-title {
+	padding: 0 5px;
+}
+
+@media (max-width: 500px) {
+	.card,
+	.card .card-banner,
+	.card .card-banner img,
+	.card .card-meta,
+	.card .card-title {
+		max-width: 100%;
+	}
+}

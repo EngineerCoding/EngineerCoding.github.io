@@ -5,7 +5,7 @@
 	            color ease-in-out 0.2s;
 }
 
-.stx-light .back, .stx-light.back,
+.stx-light.back,
 .stx-light .back-opacity, .stx-light .back-opacity {
 	background-color: rgb(234, 234, 234);
 }

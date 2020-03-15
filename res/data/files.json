@@ -12,17 +12,24 @@
 	{ "path": "/home/guest/res/css/syntax-dark.css", "type": "external", "href": "/res/css/syntax-dark.css" },
 	{ "path": "/home/guest/res/css/syntax-light.css", "type": "external", "href": "/res/css/syntax-light.css" },
 
+	{ "path": "/home/guest/res/css/components/card.css", "type": "external", "href": "/res/css/components/card.css" },
 	{ "path": "/home/guest/res/css/components/terminal.css", "type": "external", "href": "/res/css/components/terminal.css" },
 	{ "path": "/home/guest/res/css/pages/blog.css", "type": "external", "href": "/res/css/pages/blog.css" },
 	{ "path": "/home/guest/res/css/pages/index.css", "type": "external", "href": "/res/css/pages/index.css" },
 	{ "path": "/home/guest/res/css/pages/fluffy-timer.css", "type": "external", "href": "/res/css/pages/fluffy-timer.css" },
 	{ "path": "/home/guest/res/css/pages/404.css", "type": "external", "href": "/res/css/pages/404.css" },
 	{ "path": "/home/guest/res/css/page-layouts/centered-component.css", "type": "external", "href": "/res/css/page-layouts/centered-component.css" },
+	{ "path": "/home/guest/res/css/page-layouts/centered-component.css", "type": "external", "href": "/res/css/page-layouts/items-component.css" },
 
-	{ "path": "/home/guest/res/data/data/files.json", "type": "external", "href": "/res/js/data/files.json" },
+	{ "path": "/home/guest/res/data/files.json", "type": "external", "href": "/res/data/files.json" },
+	{ "path": "/home/guest/res/data/blog_posts.json", "type": "external", "href": "/res/data/blog_posts.json" },
 
+	{ "path": "/home/guest/res/img/github_pages.jpg", "type": "external", "href": "/res/img/github_pages.jpg"},
+
+	{ "path": "/home/guest/res/js/blog.js", "type": "external", "href": "/res/js/blog.js" },
 	{ "path": "/home/guest/res/js/generic.js", "type": "external", "href": "/res/js/generic.js" },
 	{ "path": "/home/guest/res/js/nav.js", "type": "external", "href": "/res/js/nav.js" },
+	{ "path": "/home/guest/res/js/template-loader.js", "type": "external", "href": "/res/js/template-loader.js" },
 	{ "path": "/home/guest/res/js/terminal.js", "type": "external", "href": "/res/js/terminal.js" },
 	{ "path": "/home/guest/res/js/theme-switcher.js", "type": "external", "href": "/res/js/theme-switcher.js" }
 ]

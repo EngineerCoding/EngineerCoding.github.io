@@ -1,0 +1,22 @@
+
+body, html {
+	width: 100%;
+	height: 100%;
+}
+
+.items-component {
+	width: calc(100% - 80px);
+	height: calc(100% - 80px);
+	overflow-y: auto;
+
+	padding: 40px;
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 1000px) {
+	.items-component {
+		justify-content: center;
+	}
+}
