@@ -1,20 +1,14 @@
 
 .card {
+	display: flex;
+	flex-direction: column;
+
 	margin: 10px;
 	z-index: 2;
 }
 
-.card,
-.card .card-banner,
-.card .card-banner img,
-.card .card-meta,
-.card .card-title {
+.card > div, .card > div > * {
 	max-width: 440px;
-}
-
-.card .card-banner, .card .card-banner img {
-	margin: auto;
-	display: block;
 }
 
 .card .card-banner img {
@@ -29,16 +23,16 @@
 	text-align: center;
 }
 
+.card .card-title > * {
+	max-width: 430px;
+}
+
 .card .card-meta, .card .card-title {
 	padding: 0 5px;
 }
 
 @media (max-width: 500px) {
-	.card,
-	.card .card-banner,
-	.card .card-banner img,
-	.card .card-meta,
-	.card .card-title {
+	.card > div, .card .card-banner img {
 		max-width: 100%;
 	}
 }
