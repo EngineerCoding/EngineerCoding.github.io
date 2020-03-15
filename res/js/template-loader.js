@@ -34,13 +34,15 @@ var loadTemplate = (function() {
 			throw new Error("Element is not a template");
 		}
 
-		var cloned = element.content.cloneNode(true);
+		var node = element.content.cloneNode(true).children[0];
 		if (fillOptions) {
-			for (var i = 0; i < cloned.children.length; i++) {
-				fillNode(cloned.children[i], fillOptions);
-			}
+			fillNode(node, fillOptions);
 		}
 
-		return cloned;
+		if (switchTheme && window.currentTheme !== "dark") {
+			switchTheme(node);
+		}
+
+		return node;
 	}
 })();

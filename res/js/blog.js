@@ -7,9 +7,9 @@
 	function initBlogPost(blogPost, node) {
 		var node = loadTemplate("card", {
 			"card-image-source": blogPost.banner,
-			"card-metadata": (new Date()).toLocaleString(),
+			"card-metadata": (new Date(blogPost.published * 1000)).toLocaleString(),
 			"card-title": blogPost.title
-		}).children[0];
+		});
 
 		var slug = blogPost.title.toLowerCase().replace(/\s/g, "-");
 		node.addEventListener("click", function(event) {
