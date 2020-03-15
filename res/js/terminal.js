@@ -82,6 +82,10 @@ var getTerminal = (function() {
 				.then(function(fileData) {
 					files = fileData;
 					files.forEach(function(file, idx) {
+						if (!file.path.startsWith("/")) {
+							file.path = "/home/guest/" + file.path;
+						}
+
 						var pathComponents = file.path.split("/");
 						pathComponents.splice(0, 1);
 
