@@ -2,7 +2,7 @@
 .terminal {
     font-family: edlo, Courier new, Courier, monospace;
 
-	z-index: 4;
+	z-index: 101;
 	position: fixed;
 
 	bottom: 0;
