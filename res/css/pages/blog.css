@@ -6,3 +6,54 @@ noscript .top-header {
 noscript .middle-header {
 	font-size: 6.2em;
 }
+
+#content-container > *,
+#content-container img {
+	margin-left: auto;
+	margin-right: auto;
+	width: 750px;
+}
+
+.video-container {
+	position: relative;
+	padding-bottom: 36.25%;
+	padding-top: 30px;
+	height: 0;
+	overflow: hidden;
+}
+
+.video-container iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+ol, li {
+	margin: 0;
+}
+
+pre {
+	padding: 2px;
+}
+
+@media (max-width: 500px) {
+	#content-container > *,
+	#content-container img {
+		width: 100%;
+	}
+}
+
+@media (max-width: 1000px) {
+	#content-container > *,
+	#content-container img {
+		width: 80%;
+	}
+}
+
+@media (max-width: 900px) {
+	.social-logo {
+        font-size: 5vw;
+    }
+}

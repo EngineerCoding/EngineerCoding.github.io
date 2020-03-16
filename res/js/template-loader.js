@@ -14,13 +14,34 @@ var loadTemplate = (function() {
 		return { apply: false };
 	}
 
-	function fillNode(node, fillOptions) {
+	function loopReplacements(fillOptions, getString, replaceString) {
 		while (true) {
-			var result = findReplacement(node.innerHTML, fillOptions);
+			var searchString = getString();
+			var result = findReplacement(searchString, fillOptions);
 			if (result.apply) {
-				node.innerHTML = node.innerHTML.replace(result.replace, result.with);
+				replaceString(searchString.replace(result.replace, result.with));
 			} else {
 				break;
+			}
+		}
+	}
+
+	function fillNode(node, fillOptions) {
+		// Replace innerHTML
+		loopReplacements(fillOptions, function() {
+			return node.innerHTML
+		}, function(value) {
+			node.innerHTML = value;
+		});
+		// replace attributes
+		for (var i = 0; i < node.attributes.length; i++) {
+			if (node.attributes[i].specified) {
+				var attribute = node.attributes[i];
+				loopReplacements(fillOptions, function() {
+					return attribute.value;
+				}, function(value) {
+					attribute.value = value;
+				});
 			}
 		}
 	}

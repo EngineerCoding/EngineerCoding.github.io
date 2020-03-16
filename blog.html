@@ -32,13 +32,35 @@
                 <div class="card-banner">
                    <img src="{{ card-image-source }}" />
                 </div>
-                <div class="card-meta">
-                    <span>{{ card-metadata }}</span>
+                <div class="card-meta align-right">
+                    <span>{{ card-metadata }}</span>+
                 </div>
-                <div class="card-title">
+                <div class="card-title center-text">
                     <h3>{{ card-title }}</h3>
                 </div>
             </div>
+        </template>
+
+        <template id="bp-header">
+            <div>
+                <div class="stx-light back center-text">
+                    <h1>{{ title }}</h1>
+                </div>
+                <div class="stx-light back align-right">
+                    <span>{{ metadata }}</span>
+                </div>
+                <img src="{{ image-source }}" />
+            </div>
+        </template>
+
+        <template id="bp-video">
+            <div class="video-container">
+                <iframe src="{{ url }}" frameborder="0" allow="accelerometer; encrypted-media; gyroscope;" allowfullscreen></iframe>
+            </div>
+        </template>
+
+        <template id="bp-code">
+            <pre class="stx-light back">{{ content }}</pre>
         </template>
 
         <header class="enable-js">
@@ -72,7 +94,10 @@
             </div>
         </noscript>
 
-        <main id="overview-container" class="stx-dark back enable-js items-component" style="display: none;">
+        <main id="overview-container" class="stx-dark back enable-js items-component wrap" style="display: none;">
+        </main>
+
+        <main id="content-container" class="stx-dark back enable-js items-component vertical scalable-font" style="display: none;">
         </main>
 
         <div id="loading-container" class="stx-dark back enable-js centered-component scalable-font">

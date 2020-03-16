@@ -15,14 +15,6 @@
 	max-height: 450px;
 }
 
-.card .card-meta {
-	text-align: right;
-}
-
-.card .card-title {
-	text-align: center;
-}
-
 .card .card-title > * {
 	max-width: 430px;
 }

@@ -12,11 +12,18 @@ body, html {
 	padding: 40px;
     display: flex;
     align-content: flex-start;
+}
+
+.wrap {
     flex-wrap: wrap;
 }
 
+.items-component.vertical {
+	flex-direction: column;
+}
+
 @media (max-width: 1000px) {
-	.items-component {
+	.items-component:not(.vertical) {
 		justify-content: center;
 	}
 }

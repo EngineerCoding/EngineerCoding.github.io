@@ -14,7 +14,7 @@ body {
 header {
     position: fixed;
     top: 1em;
-    right: 1em;
+    right: calc(1em + 5px);
 
     cursor: pointer;
 }
@@ -137,7 +137,7 @@ main {
 }
 
 .socials-container {
-    right: 0;
+    right: 5px;
 }
 
 .socials-container > #logo {
@@ -204,6 +204,10 @@ a {
 
 .center-text {
     text-align: center;
+}
+
+.align-right {
+    text-align: right;
 }
 
 .icon-font {
