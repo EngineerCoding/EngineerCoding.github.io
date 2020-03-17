@@ -25,7 +25,20 @@
 			renderPage();
 		});
 
-		overviewContainer.appendChild(node);
+		return new Promise(function(resolve, reject) {
+			overviewContainer.appendChild(node);
+			// Wait for the images to load
+			var loadedCount = 0;
+			var images = overviewContainer.getElementsByTagName("img");
+			for (var i = 0; i < images.length; i++) {
+				images[i].addEventListener("load", function(evt) {
+					loadedCount += 1;
+					if (loadedCount == images.length) {
+						resolve();
+					}
+				});
+			}
+		});
 	}
 
 	function renderGenericError() {
@@ -177,7 +190,9 @@
 				return b.published - a.published;
 			});
 
-			blogPosts.forEach(initOverviewItem);
+			return Promise.all(blogPosts.map(initOverviewItem));
+		})
+		.then(function() {
 			renderPage();
 		})
 		.catch(renderGenericError);
