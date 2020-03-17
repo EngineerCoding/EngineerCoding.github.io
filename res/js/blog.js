@@ -39,7 +39,7 @@
 	}
 
 	function renderAction(action) {
-		var actionComponents = action.match(/'[\s\w/:%=?\.]+'|[\w/:%=?\.]+/g);
+		var actionComponents = action.match(/'[\s\w/:%=?\.\[\]@]+'|[\w/:%=?\.\[\]@]+/g);
 		if (actionComponents == null) {
 			throw new Error("No action found!");
 		}
@@ -60,6 +60,10 @@
 			a.href = actionComponents[actionComponents.length >= 3 ? 2 : 1];
 			a.appendChild(document.createTextNode(visual));
 			return a;
+		} else if (actionComponents[0] == "code") {
+			var node = renderBlogPostNode({ type: "code", content: actionComponents[1] });
+			node.style.display = "inline";
+			return node;
 		} else {
 			throw new Error("Action not found: " + JSON.stringify(actionComponents));
 		}
