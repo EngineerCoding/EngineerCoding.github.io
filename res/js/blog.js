@@ -147,6 +147,7 @@
 			var data = window.sessionStorage.getItem(slug);
 			if (data != null) {
 				renderFullBlogPost(slug, JSON.parse(data));
+				loadingContainer.style.display = "none";
 			} else {
 				fetch("/res/data/blogs/" + slug + ".json")
 					.then(function(response) {
