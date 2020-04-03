@@ -192,7 +192,8 @@ var getTerminal = (function() {
             }
 
             if (!path.startsWith("~") && !path.startsWith("/")) {
-                path = this.join(this.getCurrentPath(), path);
+                path = this.normalize(
+                    this.join(this.getCurrentPath(), path));
             }
 
             displayPath = path;
