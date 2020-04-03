@@ -12,6 +12,11 @@
         <link type="text/css" rel="stylesheet" href="/res/css/syntax-light.css" />
         <link type="text/css" rel="stylesheet" href="/res/css/syntax-dark.css" />
 
+        <link rel="apple-touch-icon" sizes="180x180" href="/res/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/res/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/res/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/res/site.webmanifest">
+
         <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
         <script type="text/javascript" src="/res/js/generic.js" defer></script>
@@ -27,7 +32,7 @@
         </header>
 
         <input type="checkbox" class="css-button-action-hack" id="nav-button"/>
-        <label for="nav-button" class="floating-nav-button stx-dark">
+            <label for="nav-button" class="floating-nav-button stx-dark">
             <span class="icon-font no-select stx-cnst">~</span>
         </label>
 
@@ -44,80 +49,80 @@
         <main class="stx-dark back centered-component">
             <pre>
 <span class="info">info</span>: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
-      Route matched with {action = "Get", controller = "StaticFrontend"}. Executing controller action with signature System.Threading.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get() on controller AmelingDev.Controllers.StaticFrontendController (AmelingDev).
-   at AmelingDev.Controllers.StaticFrontendController.Get() in /home/dev/web/AmelingDev/Controllers/StaticFrontendController.cs:line 30
+    Route matched with {action = "Get", controller = "StaticFrontend"}. Executing controller action with signature System.Threading.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get() on controller AmelingDev.Controllers.StaticFrontendController (AmelingDev).
+    at AmelingDev.Controllers.StaticFrontendController.Get() in /home/dev/web/AmelingDev/Controllers/StaticFrontendController.cs:line 30
 <span class="info">info</span>: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
-      Executed action AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev) in 9086.631300000001ms
+    Executed action AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev) in 9086.631300000001ms
 <span class="info">info</span>: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
-      Executed endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
+    Executed endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
 <span class="fail">fail</span>: Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware[1]
-      An unhandled exception has occurred while executing the request.
-System.IO.FileNotFoundException: Unable to find the specified file.
-   at AmelingDev.Controllers.StaticFrontendController.Get() in /home/dev/web/AmelingDev/Controllers/StaticFrontendController.cs:line 30
-   at lambda_method(Closure , Object , Object[] )
-   at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
---- End of stack trace from previous location where exception was thrown ---
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
---- End of stack trace from previous location where exception was thrown ---
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeFilterPipelineAsync&gt;g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
-   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Logged|17_1(ResourceInvoker invoker)
-   at Microsoft.AspNetCore.Routing.EndpointMiddleware.&lt;Invoke&gt;g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
-   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
-   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+    An unhandled exception has occurred while executing the request.
+    System.IO.FileNotFoundException: Unable to find the specified file.
+    at AmelingDev.Controllers.StaticFrontendController.Get() in /home/dev/web/AmelingDev/Controllers/StaticFrontendController.cs:line 30
+    at lambda_method(Closure , Object , Object[] )
+    at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+    at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+    --- End of stack trace from previous location where exception was thrown ---
+    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+    --- End of stack trace from previous location where exception was thrown ---
+    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeFilterPipelineAsync&gt;g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Logged|17_1(ResourceInvoker invoker)
+    at Microsoft.AspNetCore.Routing.EndpointMiddleware.&lt;Invoke&gt;g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+    at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
 <span class="info">info</span>: Microsoft.AspNetCore.Hosting.Diagnostics[1]
-      Request starting HTTP/2 GET <span class="link">https://ameling.dev/res/css/layout.css</span>
+    Request starting HTTP/2 GET <span class="link">https://ameling.dev/res/css/layout.css</span>
 <span class="info">info</span>: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
-      Executing endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
+    Executing endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
 <span class="info">info</span>: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
-      Route matched with {action = "Get", controller = "StaticFrontend"}. Executing controller action with signature System.Threading.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get() on controller AmelingDev.Controllers.StaticFrontendController (AmelingDev).
+    Route matched with {action = "Get", controller = "StaticFrontend"}. Executing controller action with signature System.Threading.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get() on controller AmelingDev.Controllers.StaticFrontendController (AmelingDev).
 <span class="info">info</span>: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
-      Executed action AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev) in 4.6665ms
+    Executed action AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev) in 4.6665ms
 <span class="info">info</span>: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
-      Executed endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
+    Executed endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
 <span class="info">info</span>: Microsoft.AspNetCore.Hosting.Diagnostics[2]
-      Request finished in 25.7226ms 200 text/css; charset=utf-8
+    Request finished in 25.7226ms 200 text/css; charset=utf-8
 <span class="info">info</span>: Microsoft.AspNetCore.Hosting.Diagnostics[1]
-      Request starting HTTP/2 GET <span class="link">https://ameling.dev/res/css/page-layouts/centered-component.css</span>
+    Request starting HTTP/2 GET <span class="link">https://ameling.dev/res/css/page-layouts/centered-component.css</span>
 <span class="info">info</span>: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
-      Executing endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
+    Executing endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
 <span class="info">info</span>: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
-      Route matched with {action = "Get", controller = "StaticFrontend"}. Executing controller action with signature System.Threading.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get() on controller AmelingDev.Controllers.StaticFrontendController (AmelingDev).
+    Route matched with {action = "Get", controller = "StaticFrontend"}. Executing controller action with signature System.Threading.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get() on controller AmelingDev.Controllers.StaticFrontendController (AmelingDev).
 <span class="info">info</span>: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
-      Executed action AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev) in 4.6665ms
+    Executed action AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev) in 4.6665ms
 <span class="info">info</span>: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
-      Executed endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
+    Executed endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
 <span class="info">info</span>: Microsoft.AspNetCore.Hosting.Diagnostics[2]
-      Request finished in 25.7226ms 200 text/css; charset=utf-8
+    Request finished in 25.7226ms 200 text/css; charset=utf-8
 <span class="info">info</span>: Microsoft.AspNetCore.Hosting.Diagnostics[1]
-      Request starting HTTP/2 GET <span class="link">https://ameling.dev/res/css/pages/404.css</span>
+    Request starting HTTP/2 GET <span class="link">https://ameling.dev/res/css/pages/404.css</span>
 <span class="info">info</span>: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
-      Executing endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
+    Executing endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
 <span class="info">info</span>: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
-      Route matched with {action = "Get", controller = "StaticFrontend"}. Executing controller action with signature System.Threading.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get() on controller AmelingDev.Controllers.StaticFrontendController (AmelingDev).
+    Route matched with {action = "Get", controller = "StaticFrontend"}. Executing controller action with signature System.Threading.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get() on controller AmelingDev.Controllers.StaticFrontendController (AmelingDev).
 <span class="info">info</span>: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
-      Executed action AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev) in 4.6665ms
+    Executed action AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev) in 4.6665ms
 <span class="info">info</span>: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
-      Executed endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
+    Executed endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
 <span class="info">info</span>: Microsoft.AspNetCore.Hosting.Diagnostics[2]
-      Request finished in 25.7226ms 200 text/css; charset=utf-8
+    Request finished in 25.7226ms 200 text/css; charset=utf-8
 <span class="info">info</span>: Microsoft.AspNetCore.Hosting.Diagnostics[1]
-      Request starting HTTP/2 GET <span class="link">https://ameling.dev/res/css/syntax-light.css</span>
+    Request starting HTTP/2 GET <span class="link">https://ameling.dev/res/css/syntax-light.css</span>
 <span class="info">info</span>: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
-      Executing endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
+    Executing endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
 <span class="info">info</span>: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
-      Route matched with {action = "Get", controller = "StaticFrontend"}. Executing controller action with signature System.Threading.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get() on controller AmelingDev.Controllers.StaticFrontendController (AmelingDev).
+    Route matched with {action = "Get", controller = "StaticFrontend"}. Executing controller action with signature System.Threading.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get() on controller AmelingDev.Controllers.StaticFrontendController (AmelingDev).
 <span class="info">info</span>: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
-      Executed action AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev) in 4.6665ms
+    Executed action AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev) in 4.6665ms
 <span class="info">info</span>: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
-      Executed endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
+    Executed endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
 <span class="info">info</span>: Microsoft.AspNetCore.Hosting.Diagnostics[2]
-      Request finished in 25.7226ms 200 text/css; charset=utf-8
+    Request finished in 25.7226ms 200 text/css; charset=utf-8
             </pre>
 
             <div class="back-opacity flex flex-rows scalable-font">

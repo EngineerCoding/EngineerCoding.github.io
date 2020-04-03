@@ -83,6 +83,10 @@ var getTerminal = (function() {
 					files = fileData;
 					files.forEach(function(file, idx) {
 						if (!file.path.startsWith("/")) {
+                            if (!file.href) {
+                                file.href = "/" + file.path;
+                            }
+
 							file.path = "/home/guest/" + file.path;
 						}
 
