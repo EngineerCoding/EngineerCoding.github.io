@@ -2,104 +2,104 @@
 .terminal {
     font-family: edlo, Courier new, Courier, monospace;
 
-	z-index: 101;
-	position: fixed;
+    z-index: 101;
+    position: fixed;
 
-	bottom: 0;
-	left: 0;
-	height: 350px;
-	width: 100%;
+    bottom: 0;
+    left: 0;
+    height: 350px;
+    width: 100%;
 
-	transition: height ease-in-out 1s;
+    transition: height ease-in-out 1s;
 }
 
 .terminal.stx-dark {
-	background: black;
+    background: black;
 }
 
 .terminal.stx-light {
-	background-color: #E3E3E3;
+    background-color: #E3E3E3;
 }
 
 .terminal > .toolbar {
-	width: 100%;
-	height: 25px;
-	text-align: end;
+    width: 100%;
+    height: 25px;
+    text-align: end;
 }
 
 .terminal.stx-light > .toolbar {
-	background-color: black;
-	color: white;
+    background-color: black;
+    color: white;
 }
 
 .terminal.stx-dark > .toolbar {
-	background-color: #E3E3E3;
-	color: black;
+    background-color: #E3E3E3;
+    color: black;
 }
 
 .terminal > .command-container {
-	height: 322px;
-	width: calc(100% - 6px);
-	padding: 3px;
+    height: 322px;
+    width: calc(100% - 6px);
+    padding: 3px;
 
-	overflow-y: auto;
+    overflow-y: auto;
 }
 
 .terminal > .command-container > .blinking-cursor {
-	position: relative;
-	bottom: -0.1em;
+    position: relative;
+    bottom: -0.1em;
 
-	width: .75em;
-	height: 1em;
-	display: inline-block;
+    width: .75em;
+    height: 1em;
+    display: inline-block;
 
-	animation-name: blink;
-	animation-duration: 800ms;
-	animation-iteration-count: infinite;
-	opacity: 1;
+    animation-name: blink;
+    animation-duration: 800ms;
+    animation-iteration-count: infinite;
+    opacity: 1;
 }
 
 .terminal.stx-light > .command-container > .blinking-cursor {
-	background-color: black;
+    background-color: black;
 }
 
 .terminal.stx-light > .command-container > .file {
-	color: #A7C795;
+    color: #A7C795;
 }
 
 .terminal.stx-light > .command-container > .directory {
-	color: white;
-	background-color: #577A43;
+    color: white;
+    background-color: #577A43;
 }
 
 .terminal.stx-dark > .command-container > .blinking-cursor {
-	background-color: white;
+    background-color: white;
 }
 
 .terminal.stx-dark > .command-container > .file {
-	color: #21BBFC;
+    color: #21BBFC;
 }
 
 .terminal.stx-dark > .command-container > .directory {
-	color: white;
-	background-color: #007CB0;
+    color: white;
+    background-color: #007CB0;
 }
 
 .sticky-bottom-toolbar-fix {
-	margin-bottom: 28px;
+    margin-bottom: 28px;
 }
 
 @keyframes blink {
-	from, to { opacity: 1; }
-	50% { opacity: 0; }
+    from, to { opacity: 1; }
+    50% { opacity: 0; }
 }
 
 @media (max-height: 640px) {
-	.terminal {
-		height: 150px;
-	}
+    .terminal {
+        height: 150px;
+    }
 
-	.terminal > .command-container {
-		height: 122px;
-	}
+    .terminal > .command-container {
+        height: 122px;
+    }
 }

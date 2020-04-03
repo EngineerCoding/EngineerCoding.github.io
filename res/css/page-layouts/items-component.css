@@ -1,14 +1,14 @@
 
 body, html {
-	width: 100%;
-	overflow-y: auto;
+    width: 100%;
+    overflow-y: auto;
 }
 
 .items-component {
-	width: calc(100% - 80px);
-	height: calc(100% - 80px);
+    width: calc(100% - 80px);
+    height: calc(100% - 80px);
 
-	padding: 40px;
+    padding: 40px;
     display: flex;
     align-content: flex-start;
 }
@@ -18,13 +18,13 @@ body, html {
 }
 
 .items-component.vertical {
-	flex-direction: column;
-	height: unset;
-	min-height: calc(100% - 80px);
+    flex-direction: column;
+    height: unset;
+    min-height: calc(100% - 80px);
 }
 
 @media (max-width: 1000px) {
-	.items-component:not(.vertical) {
-		justify-content: center;
-	}
+    .items-component:not(.vertical) {
+        justify-content: center;
+    }
 }

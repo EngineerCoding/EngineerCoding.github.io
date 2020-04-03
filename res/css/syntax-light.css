@@ -1,27 +1,27 @@
 
 .stx-light {
-	color: black;
-	transition: background-color ease-in-out 0.2s,
-	            color ease-in-out 0.2s;
+    color: black;
+    transition: background-color ease-in-out 0.2s,
+                color ease-in-out 0.2s;
 }
 
 .stx-light.back,
 .stx-light .back-opacity, .stx-light .back-opacity {
-	background-color: rgb(234, 234, 234);
+    background-color: rgb(234, 234, 234);
 }
 
 .stx-light .back-opacity, .stx-light.back-opacity {
-	background-color: rgba(234, 234, 234, 0.4);
+    background-color: rgba(234, 234, 234, 0.4);
 }
 
 .stx-light .back-opacity-med, .stx-light .back-opacity-med {
-	background-color: rgba(234, 234, 234, 0.7);
+    background-color: rgba(234, 234, 234, 0.7);
 }
 
 .stx-light .stx-cnst {
-	color: #C695C6;
+    color: #C695C6;
 }
 
 .stx-light .stx-path {
-	color: #6699CC;
+    color: #6699CC;
 }

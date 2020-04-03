@@ -1,95 +1,95 @@
 [
-	{
-		"type": "paragraph",
-		"content": "In recent years the idea of having a website for myself was sparking quite a bit. After several attempts of creating a website of my liking, I noticed that I like starting new projects but finishing them is not one of my strongest suits. At least, as far as personal projects go. I figured out that it boiles down to the fact that nobody is expecting anything from me, as far as personal projects go. As years passed and my career slowly started, I figured out that working with deadlines and expectations actually trigger me to work more frequently on projects."
-	},
-	{
-		"type": "paragraph",
-		"content": "That is why, at least at the time of writing, my current website is very incomplete. I started working on this website and figured, why not buy a domain where I can actually host my website on? So I did, I bought a domain and deployed my website with Github Pages. The choice for Github Pages was very easy to make, as it is practically free (as long as you are not using it for commercial purposes, for example a webshop). Furthermore, for now I am only planning to have a static website, with some interactive compnents in the end. When that will happen I don’t know, but the intention is to build a back-end at some point."
-	},
-	{
-		"type": "paragraph",
-		"content": "So, you want to host your own website on Github Pages, right? After all, you probably haven’t asked for an introduction. Or you are in my LinkedIn network and are curious to see what I am writing about. Well, technical stuff, probably. I am planning to post on this website once in a while, and probably it will be technical. However I am not going to put such a hard limit on that, as I want to post about stuff I am interested in. Now, let’s really get into Github Pages."
-	},
-	{
-		"type": "paragraph",
-		"content": "While I can explain to you in full what Github Pages is all about, Github already has a nice video on it. And in the end, watching a video is faster then reading my explanation."
-	},
-	{
-		"type": "video",
-		"url": "https://www.youtube.com/embed/2MsN8gpT6jY"
-	},
-	{
-		"type": "paragraph",
-		"content": "In short, Github Pages is a platform which can be used for a software developer to show off his or her work. Github Pages only supports static content, which means that I only create the visuals with Github Pages. If I want to do additional processing, such as tracking how many times this post has been read for example, I would have to create an actual back-end which uses some form of storage to store how many times this page has been opened."
-	},
-	{
-		"type": "paragraph",
-		"content": "While Github pages is not limited to software developers, it can be quite a steep curve for non-developers to use it, as you first have to learn about Git. Git is a VCS as we developers like to call it, or a Version Control System. It allows developers to collaborate on the same piece of code simultaneously, where all changes to the code are tracked and can be referred to later. This last part is especially useful when developers break their own code, either to (Git) blame someone and make them pay for beers or to actually revert to a working state."
-	},
-	{
-		"type": "paragraph",
-		"content": "When a developer makes changes to code, it still can’t be seen by other developers. Therefore it needs to be pushed, to put it in git slang, to a centralized place. This is usually a server which is accessible by other developers, either in an open or closed form. Github is an example of such a server where code can be pushed to, either for it to be accessible for the public or for example just your colleagues. You might ask, why would one share code with the public? Well, if I would have to answer that myself: because I can! But for the most part I am sharing my code because it might help somebody else with a similar problem, and it provides opportunities for people to learn if they would like. For example, if they want to know how this page has been built, they can simply head over to the Github Repository this is hosted in and check it out themselves. Furthermore there is this thing called Open Source: projects which are either developed by companies or (groups of) individuals, so that I don’t have to constantly reinvent the wheel for my problem. For example, most of the programming languages are open source: everybody can either contribute to the main repository for a language’s benefit or create their own fork to start their own flavor of a programming language. And that freedom is awesome. I do want to point out one major misconception about open source projects: they are not secure by default! While everybody can check the code and validate that it is secure, that doesn’t mean that somebody is actually doing that. Always use open source projects with care!"
-	},
-	{
-		"type": "paragraph",
-		"content": "So to put this all back in context to Github pages, if I want to publish a blog post for example, I have to push it to this repository through git. That means that you can view {% a 'the source code of this website as well on Github' https://github.com/EngineerCoding/EngineerCoding.github.io %}."
-	},
-	{
-		"type": "paragraph",
-		"content": "Next to git you also need to have some knowledge of HTML and CSS. Respectively these stand for HyperText Markup Language and Cascasding Style Sheets, and are the markup languages which define the visuals of this page. Additionally JavaScript (not to be confused with Java!) can be used to make your website more interactive."
-	},
-	{
-		"type": "paragraph",
-		"content": "Github Pages provides {% a themes https://pages.github.com/themes/ %}, so that you don’t have to come up with your own design. It definitely does not mean that you don’t have to write any HTML or CSS, as you are probably going to fill it with content. The themes make use of Jekyll, a static site generator which allow you to easily create new pages with content. Github Pages themselves have {% a 'great documentation' https://help.github.com/en/github/working-with-github-pages/creating-a-github-pages-site-with-jekyll %} how one would set that up. However, it still requires some technical knowledge as I tested it on my grandma and she wasn’t able to set it up ;)."
-	},
-	{
-		"type": "paragraph",
-		"content": "After a lot of designing, fiddling and table flipping you finally managed to set up a website to your likings and pushed it to your Github Pages repository, which by the way takes the name of {% code '[Github username].github.io' %}. Now you want the URL to be a bit more personal, so you would have to purchase a domain. Be sure to purchase just a domain where you are able to add DNS records, as a lot of providers provide a domain along with a managed server. DNS, or Domain Name System, is the system which allows your browser to translate my domain name to Github Pages’ IP addresses. Yes, under the hood we are still using IP addresses! IP addresses are the locations of servers in the cloud, or in other words, addresses of other people’s computers. Because this translation from domain name to IP address happens, DNS can be more powerful than just that. DNS is also used for validation purposes, to prove that a server is who it says it is (this is a great example for mail servers, which we will dive into sometime later!)."
-	},
-	{
-		"type": "paragraph",
-		"content": "So to finally point your domain, you have to apply a few steps:"
-	},
-	{
-		"type": "ol",
-		"items": [
-			"Register your domain in the settings of your Github Pages repository.",
-			"Enforce HTTPS after you have added your domain in the settings of your Github Pages repository. While this isn’t required by Github Pages, I am making you because HTTPS > HTTP.",
-			{
-				"type": "collection",
-				"items": [
-					"Because it is different with every provider how a DNS record is defined, I have to explain that @ points to the top level domain with my provider. You have to define 4 A records:",
-					{
-						"type": "code",
-						"content": "@ A 185.199.108.153\n@ A 185.199.109.153\n@ A 185.199.110.153\n@ A 185.199.111.153"
-					}
-				]
-			},
-			{
-				"type": "collection",
-				"items": [
-					"Then you have to define a CAA record to trust the SSL provider {% a Letsencrypt https://letsencrypt.org/ %} to issue certificates for your domain:",
-					{
-						"type": "code",
-						"content": "@ CAA 0 issue letsencrypt.org"
-					}
-				]
-			},
-			{
-				"type": "collection",
-				"items": [
-					"If you would like to point the www subdomain to your Github Pages account as well, you will have to add a CNAME record. Note that the record ends with a dot in my case, because then my provider knows it is an absolute domain.",
-					{
-						"type": "code",
-						"content": "www CNAME [Github username].github.io."
-					}
-				]
-			}
-		]
-	},
-	{
-		"type": "paragraph",
-		"content": "You are all set! Your website should be up and running at your domain. Don’t hesitate to consult the Github Pages documentation if something is not working, as they probably can explain things better than me. And also look at the date of this blog post, as I do not intend to update this post as Github Pages changes; do shoot me an {% a email 'mailto:contact@ameling.dev' %} though if something is terribly wrong."
-	}
+    {
+        "type": "paragraph",
+        "content": "In recent years the idea of having a website for myself was sparking quite a bit. After several attempts of creating a website of my liking, I noticed that I like starting new projects but finishing them is not one of my strongest suits. At least, as far as personal projects go. I figured out that it boiles down to the fact that nobody is expecting anything from me, as far as personal projects go. As years passed and my career slowly started, I figured out that working with deadlines and expectations actually trigger me to work more frequently on projects."
+    },
+    {
+        "type": "paragraph",
+        "content": "That is why, at least at the time of writing, my current website is very incomplete. I started working on this website and figured, why not buy a domain where I can actually host my website on? So I did, I bought a domain and deployed my website with Github Pages. The choice for Github Pages was very easy to make, as it is practically free (as long as you are not using it for commercial purposes, for example a webshop). Furthermore, for now I am only planning to have a static website, with some interactive compnents in the end. When that will happen I don’t know, but the intention is to build a back-end at some point."
+    },
+    {
+        "type": "paragraph",
+        "content": "So, you want to host your own website on Github Pages, right? After all, you probably haven’t asked for an introduction. Or you are in my LinkedIn network and are curious to see what I am writing about. Well, technical stuff, probably. I am planning to post on this website once in a while, and probably it will be technical. However I am not going to put such a hard limit on that, as I want to post about stuff I am interested in. Now, let’s really get into Github Pages."
+    },
+    {
+        "type": "paragraph",
+        "content": "While I can explain to you in full what Github Pages is all about, Github already has a nice video on it. And in the end, watching a video is faster then reading my explanation."
+    },
+    {
+        "type": "video",
+        "url": "https://www.youtube.com/embed/2MsN8gpT6jY"
+    },
+    {
+        "type": "paragraph",
+        "content": "In short, Github Pages is a platform which can be used for a software developer to show off his or her work. Github Pages only supports static content, which means that I only create the visuals with Github Pages. If I want to do additional processing, such as tracking how many times this post has been read for example, I would have to create an actual back-end which uses some form of storage to store how many times this page has been opened."
+    },
+    {
+        "type": "paragraph",
+        "content": "While Github pages is not limited to software developers, it can be quite a steep curve for non-developers to use it, as you first have to learn about Git. Git is a VCS as we developers like to call it, or a Version Control System. It allows developers to collaborate on the same piece of code simultaneously, where all changes to the code are tracked and can be referred to later. This last part is especially useful when developers break their own code, either to (Git) blame someone and make them pay for beers or to actually revert to a working state."
+    },
+    {
+        "type": "paragraph",
+        "content": "When a developer makes changes to code, it still can’t be seen by other developers. Therefore it needs to be pushed, to put it in git slang, to a centralized place. This is usually a server which is accessible by other developers, either in an open or closed form. Github is an example of such a server where code can be pushed to, either for it to be accessible for the public or for example just your colleagues. You might ask, why would one share code with the public? Well, if I would have to answer that myself: because I can! But for the most part I am sharing my code because it might help somebody else with a similar problem, and it provides opportunities for people to learn if they would like. For example, if they want to know how this page has been built, they can simply head over to the Github Repository this is hosted in and check it out themselves. Furthermore there is this thing called Open Source: projects which are either developed by companies or (groups of) individuals, so that I don’t have to constantly reinvent the wheel for my problem. For example, most of the programming languages are open source: everybody can either contribute to the main repository for a language’s benefit or create their own fork to start their own flavor of a programming language. And that freedom is awesome. I do want to point out one major misconception about open source projects: they are not secure by default! While everybody can check the code and validate that it is secure, that doesn’t mean that somebody is actually doing that. Always use open source projects with care!"
+    },
+    {
+        "type": "paragraph",
+        "content": "So to put this all back in context to Github pages, if I want to publish a blog post for example, I have to push it to this repository through git. That means that you can view {% a 'the source code of this website as well on Github' https://github.com/EngineerCoding/EngineerCoding.github.io %}."
+    },
+    {
+        "type": "paragraph",
+        "content": "Next to git you also need to have some knowledge of HTML and CSS. Respectively these stand for HyperText Markup Language and Cascasding Style Sheets, and are the markup languages which define the visuals of this page. Additionally JavaScript (not to be confused with Java!) can be used to make your website more interactive."
+    },
+    {
+        "type": "paragraph",
+        "content": "Github Pages provides {% a themes https://pages.github.com/themes/ %}, so that you don’t have to come up with your own design. It definitely does not mean that you don’t have to write any HTML or CSS, as you are probably going to fill it with content. The themes make use of Jekyll, a static site generator which allow you to easily create new pages with content. Github Pages themselves have {% a 'great documentation' https://help.github.com/en/github/working-with-github-pages/creating-a-github-pages-site-with-jekyll %} how one would set that up. However, it still requires some technical knowledge as I tested it on my grandma and she wasn’t able to set it up ;)."
+    },
+    {
+        "type": "paragraph",
+        "content": "After a lot of designing, fiddling and table flipping you finally managed to set up a website to your likings and pushed it to your Github Pages repository, which by the way takes the name of {% code '[Github username].github.io' %}. Now you want the URL to be a bit more personal, so you would have to purchase a domain. Be sure to purchase just a domain where you are able to add DNS records, as a lot of providers provide a domain along with a managed server. DNS, or Domain Name System, is the system which allows your browser to translate my domain name to Github Pages’ IP addresses. Yes, under the hood we are still using IP addresses! IP addresses are the locations of servers in the cloud, or in other words, addresses of other people’s computers. Because this translation from domain name to IP address happens, DNS can be more powerful than just that. DNS is also used for validation purposes, to prove that a server is who it says it is (this is a great example for mail servers, which we will dive into sometime later!)."
+    },
+    {
+        "type": "paragraph",
+        "content": "So to finally point your domain, you have to apply a few steps:"
+    },
+    {
+        "type": "ol",
+        "items": [
+            "Register your domain in the settings of your Github Pages repository.",
+            "Enforce HTTPS after you have added your domain in the settings of your Github Pages repository. While this isn’t required by Github Pages, I am making you because HTTPS > HTTP.",
+            {
+                "type": "collection",
+                "items": [
+                    "Because it is different with every provider how a DNS record is defined, I have to explain that @ points to the top level domain with my provider. You have to define 4 A records:",
+                    {
+                        "type": "code",
+                        "content": "@ A 185.199.108.153\n@ A 185.199.109.153\n@ A 185.199.110.153\n@ A 185.199.111.153"
+                    }
+                ]
+            },
+            {
+                "type": "collection",
+                "items": [
+                    "Then you have to define a CAA record to trust the SSL provider {% a Letsencrypt https://letsencrypt.org/ %} to issue certificates for your domain:",
+                    {
+                        "type": "code",
+                        "content": "@ CAA 0 issue letsencrypt.org"
+                    }
+                ]
+            },
+            {
+                "type": "collection",
+                "items": [
+                    "If you would like to point the www subdomain to your Github Pages account as well, you will have to add a CNAME record. Note that the record ends with a dot in my case, because then my provider knows it is an absolute domain.",
+                    {
+                        "type": "code",
+                        "content": "www CNAME [Github username].github.io."
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "type": "paragraph",
+        "content": "You are all set! Your website should be up and running at your domain. Don’t hesitate to consult the Github Pages documentation if something is not working, as they probably can explain things better than me. And also look at the date of this blog post, as I do not intend to update this post as Github Pages changes; do shoot me an {% a email 'mailto:contact@ameling.dev' %} though if something is terribly wrong."
+    }
 ]

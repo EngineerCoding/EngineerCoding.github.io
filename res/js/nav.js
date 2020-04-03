@@ -1,6 +1,6 @@
 (function() {
-	var navCheckbox = document.getElementById("nav-button");
-	navCheckbox.addEventListener("click", function(event) {
+    var navCheckbox = document.getElementById("nav-button");
+    navCheckbox.addEventListener("click", function(event) {
         event.preventDefault();
         var input = this;
         setTimeout(function() {
@@ -8,77 +8,77 @@
         }, 130);
     });
 
-	var entering = false;
+    var entering = false;
 
-	var findParentElement = function(element, elementName) {
-		elementName = elementName.toUpperCase();
-		while (element.nodeName != elementName) {
-			element = element.parentElement;
-		}
-		return element;
-	}
+    var findParentElement = function(element, elementName) {
+        elementName = elementName.toUpperCase();
+        while (element.nodeName != elementName) {
+            element = element.parentElement;
+        }
+        return element;
+    }
 
-	var executeCommand = function(terminal, command, callback) {
-		terminal.setupNewCommand(true);
+    var executeCommand = function(terminal, command, callback) {
+        terminal.setupNewCommand(true);
 
-		var charIndex = 0;
-		var intervalId = setInterval(function() {
-			if (charIndex == command.length) {
-				terminal.executeCommand();
-				navCheckbox.checked = false;
-				charIndex += 1;
+        var charIndex = 0;
+        var intervalId = setInterval(function() {
+            if (charIndex == command.length) {
+                terminal.executeCommand();
+                navCheckbox.checked = false;
+                charIndex += 1;
 
-				if (callback) callback();
-				clearInterval(intervalId);
-			} else {
-				var eventData;
-				var character = command[charIndex];
-				if (/\s/.test(character)) {
-					eventData = { key: "", keyCode: 32 }; /* spacebar */
-				} else {
-					eventData = { key: character };
-				}
+                if (callback) callback();
+                clearInterval(intervalId);
+            } else {
+                var eventData;
+                var character = command[charIndex];
+                if (/\s/.test(character)) {
+                    eventData = { key: "", keyCode: 32 }; /* spacebar */
+                } else {
+                    eventData = { key: character };
+                }
 
-				document.dispatchEvent(new KeyboardEvent("keydown", eventData));
-				charIndex += 1;
-			}
-		}, 75);
-	}
+                document.dispatchEvent(new KeyboardEvent("keydown", eventData));
+                charIndex += 1;
+            }
+        }, 75);
+    }
 
-	var navAnchors = document.querySelectorAll("nav a");
-	for (var i = 0; i < navAnchors.length; i++) {
-		navAnchors[i].addEventListener("click", function(event) {
-			if (!entering) {
-				event.preventDefault();
-				entering = true;
+    var navAnchors = document.querySelectorAll("nav a");
+    for (var i = 0; i < navAnchors.length; i++) {
+        navAnchors[i].addEventListener("click", function(event) {
+            if (!entering) {
+                event.preventDefault();
+                entering = true;
 
-				var terminalData = getTerminal();
-				var terminal = terminalData.terminal;
+                var terminalData = getTerminal();
+                var terminal = terminalData.terminal;
 
-				if (terminal.minimized) {
-					terminal.toggleMinimize();
-				}
+                if (terminal.minimized) {
+                    terminal.toggleMinimize();
+                }
 
-				var enterCommand = function() {
-					setTimeout(function() {
-						var url = new URL(findParentElement(event.target, "a").href);
-						var fileName = url.pathname.substring(1);
-						executeCommand(terminal, "enter " + fileName, function() {
-							entering = false;
-						});
+                var enterCommand = function() {
+                    setTimeout(function() {
+                        var url = new URL(findParentElement(event.target, "a").href);
+                        var fileName = url.pathname.substring(1);
+                        executeCommand(terminal, "enter " + fileName, function() {
+                            entering = false;
+                        });
 
-					}, terminalData.created ? 500 : 50);
-				}
+                    }, terminalData.created ? 500 : 50);
+                }
 
-				if (terminal.fs.getCurrentAbsolutePath() != "/home/guest") {
-					setTimeout(function() {
-						terminalData.created = false;
-						executeCommand(terminal, "cd ~", enterCommand);
-					}, terminalData.created ? 500 : 50);
-				} else {
-					enterCommand();
-				}
-			}
-		});
-	}
+                if (terminal.fs.getCurrentAbsolutePath() != "/home/guest") {
+                    setTimeout(function() {
+                        terminalData.created = false;
+                        executeCommand(terminal, "cd ~", enterCommand);
+                    }, terminalData.created ? 500 : 50);
+                } else {
+                    enterCommand();
+                }
+            }
+        });
+    }
 })();

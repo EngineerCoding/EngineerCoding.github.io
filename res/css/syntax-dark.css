@@ -1,27 +1,27 @@
 
 .stx-dark {
-	color: white;
-	transition: background-color ease-in-out 0.2s,
-	            color ease-in-out 0.2s;
+    color: white;
+    transition: background-color ease-in-out 0.2s,
+                color ease-in-out 0.2s;
 }
 
 .stx-dark.back,
 .stx-dark .back-opacity, .stx-dark .back-opacity {
-	background-color: rgb(64, 64, 64);
+    background-color: rgb(64, 64, 64);
 }
 
 .stx-dark .back-opacity, .stx-dark .back-opacity {
-	background-color: rgba(64, 64, 64, 0.4);
+    background-color: rgba(64, 64, 64, 0.4);
 }
 
 .stx-dark .back-opacity-med, .stx-dark .back-opacity-med {
-	background-color: rgba(64, 64, 64, 0.7);
+    background-color: rgba(64, 64, 64, 0.7);
 }
 
 .stx-dark .stx-cnst {
-	color: #FD9621;
+    color: #FD9621;
 }
 
 .stx-dark .stx-path {
-	color: #67D8EF;
+    color: #67D8EF;
 }
