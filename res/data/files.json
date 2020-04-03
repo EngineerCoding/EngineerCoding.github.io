@@ -33,7 +33,9 @@
     { "path": "res/favicon/favicon-16x16.png", "type": "external-image" },
     { "path": "res/favicon/favicon-32x32.png", "type": "external-image" },
 
-    { "path": "res/img/github_pages.jpg", "type": "external-image" },
+    { "path": "res/img/404.png", "type": "external-image" },
+    { "path": "res/img/engineercoding_github_io.jpg", "type": "external-image" },
+    { "path": "res/img/index.png", "type": "external-image" },
 
     { "path": "res/js/blog.js", "type": "external" },
     { "path": "res/js/generic.js", "type": "external" },
