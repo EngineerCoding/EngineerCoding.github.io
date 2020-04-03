@@ -260,12 +260,29 @@ var getTerminal = (function() {
                 terminal.output(path + ": file or folder does not exist");
             } else if (typeof pathItem === "number") {
                 terminal.setBlocking(true);
-                fetch(terminal.fs.getFileItem(pathItem).href, { cache: "force-cache" })
+                var fileItem = terminal.fs.getFileItem(pathItem);
+                fetch(fileItem.href, { cache: "force-cache" })
                     .then(function(response) {
-                        return response.text();
+                        if (response.ok) {
+                            if (fileItem.type == "external-image") {
+                                return response.blob();
+                            } else {
+                                return response.text();
+                            }
+                        }
                     })
-                    .then(function(text) {
-                        terminal.output(text, true);
+                    .then(function(responseData) {
+                        if (fileItem.type === "external-image") {
+                            var img = document.createElement("img");
+                            img.src = URL.createObjectURL(responseData);
+                            terminal.outputNode(img);
+                        } else {
+                            terminal.output(responseData, true);
+                        }
+                        terminal.setBlocking(false);
+                    })
+                    .catch(function() {
+                        terminal.output("Something went wrong", false, ["error"]);
                         terminal.setBlocking(false);
                     });
                 return true;
@@ -567,6 +584,10 @@ var getTerminal = (function() {
                     }
                 });
             }
+        }
+
+        obj.outputNode = function(node) {
+            commandContainer.appendChild(node);
         }
 
         obj.setBlocking = function(blocking) {

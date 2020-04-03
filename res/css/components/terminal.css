@@ -45,6 +45,10 @@
     overflow-y: auto;
 }
 
+.terminal > .command-container .error {
+    color: red;
+}
+
 .terminal > .command-container > .blinking-cursor {
     position: relative;
     bottom: -0.1em;
@@ -83,6 +87,11 @@
 .terminal.stx-dark > .command-container > .directory {
     color: white;
     background-color: #007CB0;
+}
+
+.terminal.stx-dark > .command-container > img {
+    display: block;
+    background-color: white;
 }
 
 .sticky-bottom-toolbar-fix {

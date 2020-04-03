@@ -6,6 +6,8 @@
     { "path": "contact.html", "type": "link" },
     { "path": "404.html", "type": "link" },
 
+    { "path": "favicon.ico", "type": "external-image" },
+
     { "path": "res/fonts/edlo.ttf", "type": "external" },
 
     { "path": "res/css/layout.css", "type": "external" },
@@ -25,13 +27,13 @@
     { "path": "res/data/files.json", "type": "external" },
     { "path": "res/data/blog_posts.json", "type": "external" },
 
-    { "path": "res/favicon/android-chrome-192x192.png", "type": "external" },
-    { "path": "res/favicon/android-chrome-512x512.png", "type": "external" },
-    { "path": "res/favicon/apple-touch-icon.png", "type": "external" },
-    { "path": "res/favicon/favicon-16x16.png", "type": "external" },
-    { "path": "res/favicon/favicon-32x32.png", "type": "external" },
+    { "path": "res/favicon/android-chrome-192x192.png", "type": "external-image" },
+    { "path": "res/favicon/android-chrome-512x512.png", "type": "external-image" },
+    { "path": "res/favicon/apple-touch-icon.png", "type": "external-image" },
+    { "path": "res/favicon/favicon-16x16.png", "type": "external-image" },
+    { "path": "res/favicon/favicon-32x32.png", "type": "external-image" },
 
-    { "path": "res/img/github_pages.jpg", "type": "external" },
+    { "path": "res/img/github_pages.jpg", "type": "external-image" },
 
     { "path": "res/js/blog.js", "type": "external" },
     { "path": "res/js/generic.js", "type": "external" },
