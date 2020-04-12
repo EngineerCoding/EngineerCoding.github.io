@@ -183,6 +183,12 @@ var oauth2 = (function() {
         if (pkceTokenData) {
             return obj.getTokenPromise(pkceTokenData)
                 .then(function(result) {
+                    if (window.history) {
+                        var loc = window.location;
+                        window.history.replaceState({}, document.title,
+                            loc.protocol + "//" + loc.host + loc.pathname);
+                    }
+
                     if (result) {
                         return Promise.resolve(obj.getTokenData());
                     } else {
