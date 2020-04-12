@@ -41,7 +41,7 @@
 
     { "path": "res/js/blog.js", "type": "external" },
     { "path": "res/js/generic.js", "type": "external" },
-    { "path": "res/js/mail-admin.js", "type": "external" }
+    { "path": "res/js/mail-admin.js", "type": "external" },
     { "path": "res/js/nav.js", "type": "external" },
     { "path": "res/js/oauth2.js", "type": "external" },
     { "path": "res/js/template-loader.js", "type": "external" },
