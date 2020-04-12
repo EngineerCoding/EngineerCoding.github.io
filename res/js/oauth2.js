@@ -15,13 +15,14 @@ var oauth2 = (function() {
     }
 
     var baseAuthorizationUrl = "https://ameling-dev.eu.auth0.com";
+    var callbackDomain = "https://ameling.dev/";
     var authorizeEndpoint = "/authorize";
     var tokenEndpoint = "/oauth/token";
 
     var clientData = {
         "mail": {
             "client_id": "16yzhDL68OuGK5Duav23XcLyNyoVzKvR",
-            "redirect_uri": "http://localhost:8080/mail-admin.html",
+            "redirect_uri": callbackDomain + "mail-admin.html",
             "scope": "read:admin:mail write:admin:mail",
             "audience": "https://api.ameling.dev/mail"
         }
