@@ -1,10 +1,12 @@
 [
-    { "path": "index.html", "type": "link" },
-    { "path": "fluffy-timer.html", "type": "link" },
-    { "path": "career.html", "type": "link" },
-    { "path": "blog.html", "type": "link" },
-    { "path": "contact.html", "type": "link" },
     { "path": "404.html", "type": "link" },
+    { "path": "blog.html", "type": "link" },
+    { "path": "career.html", "type": "link" },
+    { "path": "contact.html", "type": "link" },
+    { "path": "fluffy-timer.html", "type": "link" },
+    { "path": "index.html", "type": "link" },
+    { "path": "login.html", "type": "link" },
+    { "path": "mail-admin.html", "type": "link" },
 
     { "path": "favicon.ico", "type": "external-image" },
 
@@ -39,7 +41,9 @@
 
     { "path": "res/js/blog.js", "type": "external" },
     { "path": "res/js/generic.js", "type": "external" },
+    { "path": "res/js/mail-admin.js", "type": "external" }
     { "path": "res/js/nav.js", "type": "external" },
+    { "path": "res/js/oauth2.js", "type": "external" },
     { "path": "res/js/template-loader.js", "type": "external" },
     { "path": "res/js/terminal.js", "type": "external" },
     { "path": "res/js/theme-switcher.js", "type": "external" }

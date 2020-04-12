@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html dir="ltr" prefix="og: http://ogp.me/ns#">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta property="og:title" content="404 not found"/>
+        <meta property="og:description" content="I probably made a mistake."/>
+        <meta property="og:image" content="https://ameling.dev/res/img/404.png"/>
+        <meta property="og:url" content="https://ameling.dev/404.html"/>
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:image:alt" content="404 not found. I probably made a mistake."/>
+
+        <meta name="robots" content="noindex">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <title>Wesley Ameling</title>
+
+        <link type="text/css" rel="stylesheet" href="/res/css/layout.css" />
+        <link type="text/css" rel="stylesheet" href="/res/css/page-layouts/centered-component.css" />
+        <link type="text/css" rel="stylesheet" href="/res/css/pages/404.css" />
+        <link type="text/css" rel="stylesheet" href="/res/css/syntax-light.css" />
+        <link type="text/css" rel="stylesheet" href="/res/css/syntax-dark.css" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/res/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/res/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/res/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/res/site.webmanifest">
+
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+        <script type="text/javascript" src="/res/js/oauth2.js"></script>
+        <script type="text/javascript">
+            var queryParameters = new URLSearchParams(window.location.search);
+            var type = queryParameters.get("type");
+            oauth2.getPkceCodeRedirectUrlPromise(type).then(function(url) {
+                window.location.replace(url);
+            });
+        </script>
+        <script type="text/javascript" src="/res/js/generic.js" defer></script>
+        <script type="text/javascript" src="/res/js/terminal.js" defer></script>
+        <script type="text/javascript" src="/res/js/nav.js" defer></script>
+        <script type="text/javascript" src="/res/js/theme-switcher.js" defer></script>
+    </head>
+    <body>
+        <header class="enable-js">
+            <div class="stx-dark pointer icon-font">
+                <i class="fa fa-sun-o"></i>
+            </div>
+        </header>
+
+        <input type="checkbox" class="css-button-action-hack" id="nav-button"/>
+            <label for="nav-button" class="floating-nav-button stx-dark">
+            <span class="icon-font no-select stx-cnst">~</span>
+        </label>
+
+        <nav class="stx-light back">
+            <ul>
+                <li class="no-select current-path"><span class="stx-cnst">~</span><span class="stx-path">/404</span></li>
+                <li><a href="/index.html"><span class="stx-cnst">~</span></a></li>
+                <li><a href="/blog.html"><span class="stx-cnst">~</span><span class="stx-path">/Blog</span></a></li>
+                <li><a href="/career.html"><span class="stx-cnst">~</span><span class="stx-path">/Career</span></a></li>
+                <li><a href="/contact.html"><span class="stx-cnst">~</span><span class="stx-path">/Contact</span></a></li>
+            </ul>
+        </nav>
+
+        <main class="stx-dark back centered-component">
+            <pre>
+<span class="info">info</span>: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+    Route matched with {action = "Get", controller = "StaticFrontend"}. Executing controller action with signature System.Threading.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get() on controller AmelingDev.Controllers.StaticFrontendController (AmelingDev).
+    at AmelingDev.Controllers.StaticFrontendController.Get() in /home/dev/web/AmelingDev/Controllers/StaticFrontendController.cs:line 30
+<span class="info">info</span>: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+    Executed action AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev) in 9086.631300000001ms
+<span class="info">info</span>: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+    Executed endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
+<span class="fail">fail</span>: Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware[1]
+    An unhandled exception has occurred while executing the request.
+    System.IO.FileNotFoundException: Unable to find the specified file.
+    at AmelingDev.Controllers.StaticFrontendController.Get() in /home/dev/web/AmelingDev/Controllers/StaticFrontendController.cs:line 30
+    at lambda_method(Closure , Object , Object[] )
+    at Microsoft.Extensions.Internal.ObjectMethodExecutor.Execute(Object target, Object[] parameters)
+    at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.SyncObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeActionMethodAsync()
+    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeNextActionFilterAsync()
+    --- End of stack trace from previous location where exception was thrown ---
+    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+    at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+    --- End of stack trace from previous location where exception was thrown ---
+    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeFilterPipelineAsync&gt;g__Awaited|19_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+    at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.&lt;InvokeAsync&gt;g__Logged|17_1(ResourceInvoker invoker)
+    at Microsoft.AspNetCore.Routing.EndpointMiddleware.&lt;Invoke&gt;g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+    at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+    at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+<span class="info">info</span>: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+    Request starting HTTP/2 GET <span class="link">https://ameling.dev/res/css/layout.css</span>
+<span class="info">info</span>: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+    Executing endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
+<span class="info">info</span>: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+    Route matched with {action = "Get", controller = "StaticFrontend"}. Executing controller action with signature System.Threading.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get() on controller AmelingDev.Controllers.StaticFrontendController (AmelingDev).
+<span class="info">info</span>: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+    Executed action AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev) in 4.6665ms
+<span class="info">info</span>: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+    Executed endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
+<span class="info">info</span>: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+    Request finished in 25.7226ms 200 text/css; charset=utf-8
+<span class="info">info</span>: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+    Request starting HTTP/2 GET <span class="link">https://ameling.dev/res/css/page-layouts/centered-component.css</span>
+<span class="info">info</span>: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+    Executing endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
+<span class="info">info</span>: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+    Route matched with {action = "Get", controller = "StaticFrontend"}. Executing controller action with signature System.Threading.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get() on controller AmelingDev.Controllers.StaticFrontendController (AmelingDev).
+<span class="info">info</span>: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+    Executed action AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev) in 4.6665ms
+<span class="info">info</span>: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+    Executed endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
+<span class="info">info</span>: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+    Request finished in 25.7226ms 200 text/css; charset=utf-8
+<span class="info">info</span>: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+    Request starting HTTP/2 GET <span class="link">https://ameling.dev/res/css/pages/404.css</span>
+<span class="info">info</span>: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+    Executing endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
+<span class="info">info</span>: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+    Route matched with {action = "Get", controller = "StaticFrontend"}. Executing controller action with signature System.Threading.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get() on controller AmelingDev.Controllers.StaticFrontendController (AmelingDev).
+<span class="info">info</span>: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+    Executed action AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev) in 4.6665ms
+<span class="info">info</span>: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+    Executed endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
+<span class="info">info</span>: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+    Request finished in 25.7226ms 200 text/css; charset=utf-8
+<span class="info">info</span>: Microsoft.AspNetCore.Hosting.Diagnostics[1]
+    Request starting HTTP/2 GET <span class="link">https://ameling.dev/res/css/syntax-light.css</span>
+<span class="info">info</span>: Microsoft.AspNetCore.Routing.EndpointMiddleware[0]
+    Executing endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
+<span class="info">info</span>: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[3]
+    Route matched with {action = "Get", controller = "StaticFrontend"}. Executing controller action with signature System.Threading.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Get() on controller AmelingDev.Controllers.StaticFrontendController (AmelingDev).
+<span class="info">info</span>: Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker[2]
+    Executed action AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev) in 4.6665ms
+<span class="info">info</span>: Microsoft.AspNetCore.Routing.EndpointMiddleware[1]
+    Executed endpoint 'AmelingDev.Controllers.StaticFrontendController.Get (AmelingDev)'
+<span class="info">info</span>: Microsoft.AspNetCore.Hosting.Diagnostics[2]
+    Request finished in 25.7226ms 200 text/css; charset=utf-8
+            </pre>
+
+            <div class="back-opacity flex flex-rows scalable-font">
+                <h1 class="my-0 top-header">4<span class="stx-cnst">0</span>4</h1>
+                <h1 class="my-0 middle-header">not found</h1>
+                <h1 class="my-0 bottom-header">I probably made a mistake</h1>
+            </div>
+        </main>
+
+        <footer class="stx-dark">
+            <div class="back-opacity-med copyright sticky-bottom scalable-font">
+                <span>Copyright &copy; <span id="copyright-year">2020</span> Wesley Ameling</span>
+            </div>
+            <div class="socials-container sticky-bottom">
+                <svg id="logo" viewBox="0 0 102.71 115.5" xmlns="http://www.w3.org/2000/svg" class="no-pointer-events">
+                    <defs>
+                        <style>.b{fill:none;}.b,.a{stroke:#fff;}.a{fill:#404040;}</style>
+                    </defs>
+                    <g>
+                        <path class="a" id="logo-path-a" d="M.5,1.26c.64,65,3.31,67.79,6.58,68,4,.21,8.44-33.77,12.76-33.38,4.15.38,2.68,34,6.21,34.38,3.05.35,6.07-4.85,17.46-69.46"/>
+                        <path class="b" id="logo-path-b" d="M24.34,48.31c56.28-20.66,73.92-14.16,77.22-.94,5.43,21.77-24.47,75.88-37.83,66.56C47.77,102.8,55,.81,50.6.5c-2.35-.17-2.13,29-14.18,51.56C31.5,61.28,26,66.64,21.71,69.87"/>
+                    </g>
+                </svg>
+                <a href="https://github.com/EngineerCoding" class="social-logo github" target="_blank" rel="noopener">
+                    <i class="fa fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/wesley-ameling/" class="social-logo linkedin" target="_blank" rel="noopener">
+                    <i class="fa fa-linkedin-square"></i>
+                </a>
+            </div>
+        </footer>
+        <script>
+            document.getElementById("copyright-year").innerText = (new Date()).getFullYear();
+        </script>
+    </body>
+</html>
