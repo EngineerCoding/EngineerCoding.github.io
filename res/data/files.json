@@ -22,9 +22,10 @@
     { "path": "res/css/pages/blog.css", "type": "external" },
     { "path": "res/css/pages/index.css", "type": "external" },
     { "path": "res/css/pages/fluffy-timer.css", "type": "external" },
+    { "path": "res/css/pages/mail-admin.css", "type": "external" },
     { "path": "res/css/pages/404.css", "type": "external" },
     { "path": "res/css/page-layouts/centered-component.css", "type": "external" },
-    { "path": "res/css/page-layouts/centered-component.css", "type": "external" },
+    { "path": "res/css/page-layouts/items-component.css", "type": "external" },
 
     { "path": "res/data/files.json", "type": "external" },
     { "path": "res/data/blog_posts.json", "type": "external" },
@@ -40,6 +41,7 @@
     { "path": "res/img/index.png", "type": "external-image" },
 
     { "path": "res/js/blog.js", "type": "external" },
+    { "path": "res/js/crud.js", "type": "external" },
     { "path": "res/js/generic.js", "type": "external" },
     { "path": "res/js/mail-admin.js", "type": "external" },
     { "path": "res/js/nav.js", "type": "external" },

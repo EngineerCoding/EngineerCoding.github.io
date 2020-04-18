@@ -1,0 +1,67 @@
+
+.stx-light tr,
+.stx-light td {
+    border-color: black;
+}
+
+td {
+    display: inline-block;
+    border-color: white;
+
+    height: 24px;
+}
+
+td:not(:last-child) {
+    border-right: 1px solid;
+}
+
+tr {
+    display: block;
+}
+
+tbody > tr {
+    display: block;
+    border-color: white;
+    border: 1px solid;
+    border-bottom: none;
+}
+
+tbody > tr:last-child {
+    border-bottom: 1px solid;
+}
+
+tr > th,
+tr > td {
+    width: 120px;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.controls {
+    padding-top: 10px;
+    width: 100%;
+}
+
+.controls > .disabled {
+    cursor: initial;
+    color: #797979;
+}
+
+#add-tooltip input[type=text] {
+    width: 50%;
+    padding: 6px 10px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+#add-tooltip button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    margin: 6px 2px;
+    cursor: pointer;
+}
