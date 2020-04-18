@@ -138,7 +138,6 @@ var oauth2 = (function() {
                 return response.json();
             })
             .then(function(tokenData) {
-                // TODO: check access and id tokens!
                 window.localStorage.setItem(keys.token.access, tokenData.access_token);
                 window.localStorage.setItem(keys.token.scope, tokenData.scope);
                 if (tokenData.refresh_token) {
@@ -168,14 +167,28 @@ var oauth2 = (function() {
         return tokenData;
     }
 
-    obj.isValidTokenData = function(data) {
+    obj.isValidTokenData = function(data, type) {
+        if (!clientData[type]) {
+            return false;
+        }
+
         if (!data) {
             data = this.getTokenData();
         }
 
         var currentTimestamp = (new Date()).getTime();
         var expiresInTimestamp = data["expires"].getTime();
-        return currentTimestamp < expiresInTimestamp;
+        if (currentTimestamp < expiresInTimestamp) {
+            var client = clientData[type];
+            if (typeof client.scope !== "undefined") {
+                var requiredScopes = client.scope.split(" ");
+                var availableScopes = (data.scope || "").split(" ");
+                return requiredScopes.every(function(scope) {
+                    return availableScopes.indexOf(scope) !== -1;
+                });
+            }
+        }
+        return false;
     }
 
     obj.getPkceCodeFlowPromise = function(type) {
@@ -197,13 +210,20 @@ var oauth2 = (function() {
                 });
         } else {
             var oauthData = obj.getTokenData();
-            if (!obj.isValidTokenData(oauthData)) {
+            if (!obj.isValidTokenData(oauthData, type)) {
                 return obj.getPkceCodeRedirectUrlPromise(type).then(function(url) {
                     window.location.replace(url);
                     return Promise.reject();
                 });
             }
             return Promise.resolve(oauthData);
+        }
+    }
+
+    obj.getRedirectUri = function(type) {
+        var client = clientData[type];
+        if (client) {
+            return client.redirect_uri;
         }
     }
 

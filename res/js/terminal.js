@@ -312,9 +312,10 @@ var getTerminal = (function() {
         },
         'su': function(terminal, commandArguments) {
             if (commandArguments.length > 0) {
-                setPersistent("user", commandArguments[0], false, window.sessionStorage);
+                window.location.href = "/login.html?type=" + encodeURIComponent(commandArguments[0]);
+            } else {
+                terminal.output("required user");
             }
-            window.location.href = "/login.html";
         }
     };
 

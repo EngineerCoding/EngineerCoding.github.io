@@ -31,9 +31,10 @@
         <script type="text/javascript">
             var queryParameters = new URLSearchParams(window.location.search);
             var type = queryParameters.get("type");
-            oauth2.getPkceCodeRedirectUrlPromise(type).then(function(url) {
-                window.location.replace(url);
-            });
+            oauth2.getPkceCodeFlowPromise(type)
+                .then(function(tokenData) {
+                    window.location.replace(oauth2.getRedirectUri(type));
+                });
         </script>
         <script type="text/javascript" src="/res/js/generic.js" defer></script>
         <script type="text/javascript" src="/res/js/terminal.js" defer></script>
@@ -42,7 +43,7 @@
     </head>
     <body>
         <header class="enable-js">
-            <div class="stx-dark pointer icon-font">
+            <div class="stx-dark icon-font">
                 <i class="fa fa-sun-o"></i>
             </div>
         </header>

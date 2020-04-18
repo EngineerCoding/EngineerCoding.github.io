@@ -2,6 +2,7 @@
     var overviewContainer = document.getElementById("overview-container");
     var contentContainer = document.getElementById("content-container");
     var loadingContainer = document.getElementById("loading-container");
+    loadingContainer.style.display = "flex";
 
     var baseUrl = "/blog.html";
 

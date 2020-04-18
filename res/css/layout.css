@@ -114,6 +114,11 @@ main {
     flex-direction: row;
 }
 
+.flex-center {
+    justify-content: center;
+    align-items: center;
+}
+
 .tm-0, .my-0 {
     margin-top: 0;
 }
@@ -188,6 +193,10 @@ a {
 
 .no-select {
     user-select: none;
+}
+
+.pointer {
+    cursor: pointer;
 }
 
 .no-pointer-events {
