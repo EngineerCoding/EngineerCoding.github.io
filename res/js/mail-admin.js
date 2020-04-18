@@ -28,6 +28,14 @@
         });
     }
 
+    function toggleBlacklistHandler(event) {
+        var emailUser = this.parentElement.parentElement.getAttribute("data-email-user");
+        var setBlacklisted = this.getAttribute("data-blacklisted") === "false";
+        crudApi.update(emailUser, { blacklisted: setBlacklisted }).then(function() {
+            moveToPage();
+        });
+    }
+
     var currentPage = 0;
     function showPage(pageIndex, refresh) {
         return crudApi.all(pageIndex, itemsPerPage).then(function(data) {
@@ -75,7 +83,7 @@
                     tag.innerText = row.tag;
 
                     var blacklistedIcon = document.createElement("i");
-                    blacklistedIcon.classList.add("fa");
+                    blacklistedIcon.classList.add("fa", "pointer");
                     if (row.blacklisted) {
                         blacklistedIcon.classList.add("fa-check");
                         blacklistedIcon.style.color = "green";
@@ -83,6 +91,8 @@
                         blacklistedIcon.classList.add("fa-times");
                         blacklistedIcon.style.color = "red";
                     }
+                    blacklistedIcon.setAttribute("data-blacklisted", row.blacklisted);
+                    blacklistedIcon.addEventListener("click", toggleBlacklistHandler);
                     blacklisted.appendChild(blacklistedIcon);
 
                     var deleteIcon = document.createElement("i");
