@@ -23,6 +23,7 @@
 
     function deleteHandler(event) {
         var emailUser = this.parentElement.parentElement.getAttribute("data-email-user");
+        setLoading();
         crudApi.delete(emailUser).then(function(response) {
             moveToPage();
         });
@@ -31,6 +32,7 @@
     function toggleBlacklistHandler(event) {
         var emailUser = this.parentElement.parentElement.getAttribute("data-email-user");
         var setBlacklisted = this.getAttribute("data-blacklisted") === "false";
+        setLoading();
         crudApi.update(emailUser, { blacklisted: setBlacklisted }).then(function() {
             moveToPage();
         });
@@ -133,6 +135,7 @@
         var blacklistedInput = addTooltip.querySelector("#blacklisted");
         addTooltip.querySelector("button").addEventListener("click", function() {
             if (emailUserInput.value.length > 0) {
+                setLoading();
                 crudApi.create({
                     emailUser: emailUserInput.value,
                     tag: tagInput.value,
@@ -145,6 +148,11 @@
                 });
             }
         });
+    }
+
+    function setLoading() {
+        contentContainer.style.display = "none";
+        loadingContainer.style.display = "flex";
     }
 
     function moveToPageHandler(forward) {
@@ -176,9 +184,7 @@
             pageIndex = currentPage;
         }
 
-        contentContainer.style.display = "none";
-        loadingContainer.style.display = "flex";
-
+        setLoading();
         showPage(pageIndex).then(function(responseData) {
             loadingContainer.style.display = "none";
             contentContainer.style.display = "flex";
