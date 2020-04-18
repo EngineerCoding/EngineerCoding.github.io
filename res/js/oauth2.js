@@ -21,10 +21,9 @@ var oauth2 = (function() {
 
     var clientData = {
         "mail": {
-            "client_id": "16yzhDL68OuGK5Duav23XcLyNyoVzKvR",
+            "client_id": "E7mr6gn02JEHiY2yS37wJ2V1PAL95bdJ",
             "redirect_uri": callbackDomain + "mail-admin.html",
-            "scope": "read:admin:mail write:admin:mail",
-            "audience": "https://api.ameling.dev/mail"
+            "audience": "https://api.ameling.dev"
         }
     };
 
@@ -139,7 +138,9 @@ var oauth2 = (function() {
             })
             .then(function(tokenData) {
                 window.localStorage.setItem(keys.token.access, tokenData.access_token);
-                window.localStorage.setItem(keys.token.scope, tokenData.scope);
+                if (tokenData.scope) {
+                    window.localStorage.setItem(keys.token.scope, tokenData.scope);
+                }
                 if (tokenData.refresh_token) {
                     window.localStorage.setItem(keys.token.refresh, tokenData.refresh_token);
                 }
@@ -187,6 +188,7 @@ var oauth2 = (function() {
                     return availableScopes.indexOf(scope) !== -1;
                 });
             }
+            return true;
         }
         return false;
     }
