@@ -1,24 +1,36 @@
-var getTerminal = (function() {
-    var addCss = function(cssUrl) {
-        var links = document.head.querySelectorAll("link[type=\"text/css\"]");
-        for (var i = 0; i < links.length; i++) {
-            if (links[i].getAttribute("href") == cssUrl) {
-                return new Promise(function(resolve, reject) {
-                    resolve();
-                });
-            }
+var createOrGetTerminal = (function() {
+    var addToHead = function(selector, create) {
+        var headElement = document.head.querySelector(selector);
+        if (headElement != null) {
+            return Promise.resolve();
         }
 
         return new Promise(function(resolve, reject) {
-            var link = document.createElement("link");
-            link.setAttribute("type", "text/css");
-            link.setAttribute("rel", "stylesheet");
-            link.setAttribute("href", cssUrl);
-            link.addEventListener("load", function(event) {
+            var element = create();
+            element.addEventListener("load", function(event) {
                 resolve();
             });
 
-            document.head.appendChild(link);
+            document.head.appendChild(element);
+        });
+    }
+
+    var addCss = function(url) {
+        return addToHead("link[href=\"" + url + "\"]", function() {
+            var link = document.createElement("link");
+            link.setAttribute("type", "text/css");
+            link.setAttribute("rel", "stylesheet");
+            link.setAttribute("href", url);
+            return link;
+        });
+    }
+
+    var addScript = function(url) {
+        return addToHead("script[src=\"" + url + "\"]", function() {
+            var script = document.createElement("script");
+            script.setAttribute("type", "text/javascript");
+            script.setAttribute("src", url);
+            return script;
         });
     }
 
@@ -684,31 +696,48 @@ var getTerminal = (function() {
     }
 
     var terminal;
-    var initTerminal = function(event) {
-        var created = false;
+    var shake;
 
-        if (!event) {
-            event = { altKey: true, code: "KeyT" };
+    var createTerminal = function() {
+        if (!(!terminal || terminal.destroyed)) {
+            return false;
         }
 
-        if ((!terminal || terminal.destroyed) && event.altKey && event.code == "KeyT") {
-            var keypressListener = function(event) {
-                terminal.onKeyPress(event);
-            };
-
-            created = true;
-            terminal = new Terminal();
-            terminal.addOnDestroyedHandler(function() {
-                document.removeEventListener("keydown", keypressListener);
-                document.addEventListener("keydown", initTerminal);
-            });
-            document.addEventListener("keydown", keypressListener);
+        var keypressListener = function(event) {
+            terminal.onKeyPress(event);
+        };
+        if (shake) {
+            shake.stop();
         }
 
-        return {terminal: terminal, created: created};
+        terminal = new Terminal();
+        terminal.addOnDestroyedHandler(function() {
+            document.removeEventListener("keydown", keypressListener);
+            document.addEventListener("keydown", initTerminalByKeyCombo);
+            document.addEventListener("shake", createTerminal);
+            if (shake) {
+                shake.start();
+            }
+        });
+        document.addEventListener("keydown", keypressListener);
+        return true;
     }
 
-    document.addEventListener("keydown", initTerminal);
+    var initTerminalByKeyCombo = function(event) {
+        if (event.altKey && event.code == "KeyT") {
+            createTerminal();
+        }
+    }
 
-    return initTerminal;
+    document.addEventListener("keydown", initTerminalByKeyCombo);
+    addScript("https://cdn.jsdelivr.net/npm/shake.js@1.2.2/shake.min.js")
+        .then(function() {
+            var shake = new Shake();
+            shake.start();
+            window.addEventListener("shake", createTerminal, false);
+        });
+
+    return function() {
+        return { created: createTerminal(), terminal: terminal };
+    };
 })();

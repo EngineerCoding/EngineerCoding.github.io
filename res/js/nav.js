@@ -52,7 +52,7 @@
                 event.preventDefault();
                 entering = true;
 
-                var terminalData = getTerminal();
+                var terminalData = createOrGetTerminal();
                 var terminal = terminalData.terminal;
 
                 if (terminal.minimized) {
