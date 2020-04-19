@@ -15,7 +15,7 @@ var oauth2 = (function() {
     }
 
     var baseAuthorizationUrl = "https://ameling-dev.eu.auth0.com";
-    var callbackDomain = "http://localhost:8080/";//"https://ameling.dev/";
+    var callbackDomain = "https://ameling.dev/";
     var authorizeEndpoint = "/authorize";
     var tokenEndpoint = "/oauth/token";
 
