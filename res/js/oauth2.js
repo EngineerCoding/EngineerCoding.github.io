@@ -15,21 +15,22 @@ var oauth2 = (function() {
     }
 
     var baseAuthorizationUrl = "https://ameling-dev.eu.auth0.com";
-    var callbackDomain = "https://ameling.dev/";
+    var callbackDomain = "http://localhost:8080/";//"https://ameling.dev/";
     var authorizeEndpoint = "/authorize";
     var tokenEndpoint = "/oauth/token";
 
     var clientData = {
-        "mail": {
-            "client_id": "E7mr6gn02JEHiY2yS37wJ2V1PAL95bdJ",
-            "redirect_uri": callbackDomain + "mail-admin.html",
-            "audience": "https://api.ameling.dev"
-        }
+        "client_id": "E7mr6gn02JEHiY2yS37wJ2V1PAL95bdJ",
+        "audience": "https://api.ameling.dev"
     };
 
+    var redirectUris = {
+        "mail": callbackDomain + "mail-admin.html"
+    }
+
     var keys = {
+        "type": "oauthType",
         "code": {
-            "type": "oauthType",
             "state": "oauthState",
             "verifier": "oauthCodeVerifier",
         },
@@ -46,7 +47,7 @@ var oauth2 = (function() {
     var obj = {};
 
     obj.getPkceCodeRedirectUrlPromise = function(type) {
-        if (!window.localStorage || !window.crypto || !clientData[type]) {
+        if (!window.localStorage || !window.crypto || !redirectUris[type]) {
             return Promise.reject();
         }
 
@@ -60,7 +61,7 @@ var oauth2 = (function() {
             .then(function(codeChallenge) {
                 var state = toBase64(window.crypto.getRandomValues(new Uint8Array(32)));
 
-                window.localStorage.setItem(keys.code.type, type);
+                window.localStorage.setItem(keys.type, type);
                 window.localStorage.setItem(keys.code.state, state);
                 window.localStorage.setItem(keys.code.verifier, codeVerifier);
 
@@ -71,16 +72,18 @@ var oauth2 = (function() {
                     "state": state
                 };
 
-                var authorizationObject = clientData[type];
-                var queryString = generateQueryString(Object.assign({}, pkceCodeData, authorizationObject));
+                var queryData = Object.assign({
+                    "redirect_uri": redirectUris[type]
+                }, pkceCodeData, clientData);
+                var queryString = generateQueryString(queryData);
 
                 return baseAuthorizationUrl + authorizeEndpoint + queryString;
             });
     };
 
     obj.canExecutePkceTokenFlow = function(type) {
-        var storedType = window.localStorage.getItem(keys.code.type);
-        if (storedType == null || storedType !== type || !clientData[type]) {
+        var storedType = window.localStorage.getItem(keys.type);
+        if (storedType == null || !redirectUris[storedType]) {
             return false;
         }
 
@@ -118,11 +121,10 @@ var oauth2 = (function() {
         var queryParameters = new URLSearchParams(window.location.search);
         var code = queryParameters.get("code");
 
-        var client = clientData[type];
         return {
             "grant_type": "authorization_code",
-            "client_id": client.client_id,
-            "redirect_uri": client.redirect_uri,
+            "client_id": clientData.client_id,
+            "redirect_uri": redirectUris[type],
             "code_verifier": storedCodeVerifier,
             "code": code,
         };
@@ -168,11 +170,7 @@ var oauth2 = (function() {
         return tokenData;
     }
 
-    obj.isValidTokenData = function(data, type) {
-        if (!clientData[type]) {
-            return false;
-        }
-
+    obj.isValidTokenData = function(data) {
         if (!data) {
             data = this.getTokenData();
         }
@@ -180,9 +178,8 @@ var oauth2 = (function() {
         var currentTimestamp = (new Date()).getTime();
         var expiresInTimestamp = data["expires"].getTime();
         if (currentTimestamp < expiresInTimestamp) {
-            var client = clientData[type];
-            if (typeof client.scope !== "undefined") {
-                var requiredScopes = client.scope.split(" ");
+            if (typeof clientData.scope !== "undefined") {
+                var requiredScopes = clientData.scope.split(" ");
                 var availableScopes = (data.scope || "").split(" ");
                 return requiredScopes.every(function(scope) {
                     return availableScopes.indexOf(scope) !== -1;
@@ -212,7 +209,7 @@ var oauth2 = (function() {
                 });
         } else {
             var oauthData = obj.getTokenData();
-            if (!obj.isValidTokenData(oauthData, type)) {
+            if (!obj.isValidTokenData(oauthData)) {
                 return obj.getPkceCodeRedirectUrlPromise(type).then(function(url) {
                     window.location.replace(url);
                     return Promise.reject();
@@ -223,10 +220,17 @@ var oauth2 = (function() {
     }
 
     obj.getRedirectUri = function(type) {
-        var client = clientData[type];
-        if (client) {
-            return client.redirect_uri;
+        return redirectUris[type];
+    }
+
+    obj.setCurrentType = function(type) {
+        if (redirectUris[type]) {
+            return window.localStorage.setItem(keys.type, type);
         }
+    }
+
+    obj.getCurrentType = function() {
+        return window.localStorage.getItem(keys.type);
     }
 
     return obj;

@@ -1,6 +1,6 @@
 
 var Crud = (function() {
-    return function(baseUrl, headers, onError) {
+    return function(baseUrl, headers) {
         if (!baseUrl.endsWith("/")) {
             baseUrl += "/";
         }
@@ -18,13 +18,14 @@ var Crud = (function() {
                 .then(function(response) {
                     if (response.ok) {
                         return response.json();
+                    } else if (response.status == 401 && oauth2) {
+                        var type = oauth2.getCurrentType();
+                        oauth2.getPkceCodeRedirectUrlPromise(type)
+                            .then(function(url) {
+                                top.window.location.href = url;
+                            });
                     }
                     return Promise.reject();
-                })
-                .catch(function() {
-                    if (onError) {
-                        onError();
-                    }
                 });
         }
 

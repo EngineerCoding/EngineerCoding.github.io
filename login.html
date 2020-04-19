@@ -25,10 +25,18 @@
         <script type="text/javascript">
             var queryParameters = new URLSearchParams(window.location.search);
             var type = queryParameters.get("type");
-            oauth2.getPkceCodeFlowPromise(type)
-                .then(function(tokenData) {
-                    window.location.replace(oauth2.getRedirectUri(type));
-                });
+            if (type == null) {
+                type = oauth2.getCurrentType();
+            } else {
+                oauth2.setCurrentType(type);
+            }
+
+            if (type != null) {
+                oauth2.getPkceCodeFlowPromise(type)
+                    .then(function(tokenData) {
+                        window.location.replace(oauth2.getRedirectUri(type));
+                    });
+            }
         </script>
         <script type="text/javascript" src="/res/js/generic.js" defer></script>
         <script type="text/javascript" src="/res/js/terminal.js" defer></script>
