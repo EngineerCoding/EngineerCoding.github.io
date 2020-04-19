@@ -164,10 +164,14 @@ var oauth2 = (function() {
             return acummulator && typeof tokenData[key] != null;
         }, true);
 
-        var timestamp = parseInt(tokenData["timestamp"]);
-        tokenData["timestamp"] = new Date(timestamp);
-        var expiresInTimestamp = timestamp + parseInt(tokenData["expires"]) * 1000;
-        tokenData["expires"] = new Date(expiresInTimestamp);
+        var timestamp = parseInt(tokenData.timestamp);
+        tokenData.timestamp = new Date(timestamp);
+        var expiresInTimestamp = timestamp + parseInt(tokenData.expires) * 1000;
+        tokenData.expires = new Date(expiresInTimestamp);
+        tokenData.getAuthorizationHeader = function() {
+            return tokenData.type + " " + tokenData.access;
+        }
+
         return tokenData;
     }
 

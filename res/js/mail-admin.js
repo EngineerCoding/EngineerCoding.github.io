@@ -16,7 +16,7 @@
     oauth2.getPkceCodeFlowPromise("mail")
         .then(function(data) {
             crudApi = new Crud("https://api.ameling.dev/mail/forwarding", {
-                "Authorization": data.type + " " + data.access
+                "Authorization": data.getAuthorizationHeader()
             });
             initialize();
         });

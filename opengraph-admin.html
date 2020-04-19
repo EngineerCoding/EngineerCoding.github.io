@@ -89,11 +89,15 @@
                         contentContainer.style.display = "none";
                         loadingContainer.style.display = "flex";
 
-                        fetch("https://api.ameling.dev/opengraph/refresh", {"method": "POST"})
-                            .then(function() {
-                                contentContainer.style.display = "flex";
-                                loadingContainer.style.display = "none";
-                            });
+                        fetch("https://api.ameling.dev/opengraph/refresh", {
+                            "method": "POST",
+                            "headers": {
+                                "Authorization": tokenData.getAuthorizationHeader()
+                            }
+                        }).then(function() {
+                            contentContainer.style.display = "flex";
+                            loadingContainer.style.display = "none";
+                        });
                     });
                 });
         </script>
