@@ -11,7 +11,7 @@ var oauth2 = (function() {
         }, ""))
             .replace(/\+/g, "-")
             .replace(/\//g, "_")
-            .replace(/=/g, "");;
+            .replace(/=/g, "");
     }
 
     var baseAuthorizationUrl = "https://ameling-dev.eu.auth0.com";
@@ -25,7 +25,8 @@ var oauth2 = (function() {
     };
 
     var redirectUris = {
-        "mail": callbackDomain + "mail-admin.html"
+        "mail": callbackDomain + "mail-admin.html",
+        "opengraph": callbackDomain + "opengraph-admin.html"
     }
 
     var keys = {

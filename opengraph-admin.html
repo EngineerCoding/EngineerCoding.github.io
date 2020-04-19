@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html dir="ltr">
+    <head>
+        <meta charset="UTF-8"/>
+
+        <meta name="robots" content="noindex">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <title>Wesley Ameling</title>
+
+        <link type="text/css" rel="stylesheet" href="/res/css/layout.css" />
+        <link type="text/css" rel="stylesheet" href="/res/css/page-layouts/centered-component.css" />
+        <link type="text/css" rel="stylesheet" href="/res/css/components/loading.css" />
+        <link type="text/css" rel="stylesheet" href="/res/css/syntax-light.css" />
+        <link type="text/css" rel="stylesheet" href="/res/css/syntax-dark.css" />
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/res/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/res/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/res/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/res/site.webmanifest">
+
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+        <script type="text/javascript" src="/res/js/oauth2.js"></script>
+        <script type="text/javascript" src="/res/js/generic.js" defer></script>
+        <script type="text/javascript" src="/res/js/terminal.js" defer></script>
+        <script type="text/javascript" src="/res/js/nav.js" defer></script>
+        <script type="text/javascript" src="/res/js/theme-switcher.js" defer></script>
+    </head>
+    <body>
+        <header class="enable-js">
+            <div class="stx-dark icon-font">
+                <i class="fa fa-sun-o"></i>
+            </div>
+        </header>
+
+        <input type="checkbox" class="css-button-action-hack" id="nav-button"/>
+        <label for="nav-button" class="floating-nav-button stx-dark">
+            <span class="icon-font no-select stx-cnst">~</span>
+        </label>
+
+        <nav class="stx-light back">
+            <ul>
+                <li class="no-select current-path"><span class="stx-cnst">~</span></li>
+                <li><a href="/blog.html"><span class="stx-cnst">~</span><span class="stx-path">/Blog</span></a></li>
+                <li><a href="/career.html"><span class="stx-cnst">~</span><span class="stx-path">/Career</span></a></li>
+                <li><a href="/contact.html"><span class="stx-cnst">~</span><span class="stx-path">/Contact</span></a></li>
+            </ul>
+        </nav>
+
+        <noscript class="stx-dark back centered-component">
+            <div class="flex flex-rows scalable-font">
+                <h1 class="my-0 top-header"><span class="stx-cnst">J</span>ava<span class="stx-cnst">S</span>cript</h1>
+                <h1 class="my-0 middle-header">is disabled</h1>
+                <h1 class="my-0 bottom-header center-text">
+                    <a href="https://enable-javascript.com/" target="_blank" rel="nooponer" class="stx-path">Check how to enable</a>
+                </h1>
+            </div>
+        </noscript>
+
+        <main id="content-container" class="stx-dark back centered-component" style="display: none;">
+            <button id="refresh-button" class="pointer scalable-font" style="background-color: #4CAF50; border: none; color: white; padding: 16px 32px; margin: 6px 2px; text-decoration: none;">
+                Refresh blog database
+            </button>
+        </main>
+
+        <div id="loading-container" class="stx-dark back enable-js centered-component scalable-font" style="display: none;">
+            <div class="loading"></div>
+        </div>
+
+        <footer class="stx-dark">
+            <div class="copyright sticky-bottom scalable-font">
+                <span>Copyright &copy; <span id="copyright-year">2020</span> Wesley Ameling</span>
+            </div>
+        </footer>
+        <script>
+            document.getElementById("copyright-year").innerText = (new Date()).getFullYear();
+
+            var contentContainer = document.getElementById("content-container");
+            var loadingContainer = document.getElementById("loading-container");
+            var refreshButton = document.getElementById("refresh-button");
+
+            oauth2.getPkceCodeFlowPromise("opengraph")
+                .then(function(tokenData) {
+                    contentContainer.style.display = "flex";
+                    loadingContainer.style.display = "none";
+
+                    refreshButton.addEventListener("click", function() {
+                        contentContainer.style.display = "none";
+                        loadingContainer.style.display = "flex";
+
+                        fetch("https://api.ameling.dev/opengraph/refresh", {"method": "POST"})
+                            .then(function() {
+                                contentContainer.style.display = "flex";
+                                loadingContainer.style.display = "none";
+                            });
+                    });
+                });
+        </script>
+    </body>
+</html>
