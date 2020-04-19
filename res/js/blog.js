@@ -8,6 +8,9 @@
 
     var blogPosts = {};
 
+    // In case we are embedded in an iframe
+    document.domain = window.location.host;
+
     function getHeaderData(blogPost, imageKey, metadataKey, titleKey) {
         return {
             [imageKey]: blogPost.banner,
@@ -157,7 +160,7 @@
             overviewContainer.style.display = "none";
             contentContainer.style.display = "none";
             loadingContainer.style.display = "flex";
-            var slug = window.location.hash.substring(1);
+            var slug = decodeURIComponent(window.location.hash.substring(1));
             var data = window.sessionStorage.getItem(slug);
             if (data != null) {
                 renderFullBlogPost(slug, JSON.parse(data));
@@ -166,7 +169,7 @@
                 fetch("/res/data/blogs/" + slug + ".json")
                     .then(function(response) {
                         if (!response.ok) {
-                            window.location.href = "/404.html";
+                            parent.window.location.href = "/404.html";
                             return new Promise(function() { });
                         }
                         return response.json();

@@ -315,7 +315,7 @@ var createOrGetTerminal = (function() {
             if (typeof pathItem === "number") {
                 var fileObject = terminal.fs.getFileItem(pathItem);
                 if (fileObject.type === "link") {
-                    window.location.href = fileObject.href;
+                    parent.window.location.href = fileObject.href;
                     return;
                 }
             }
@@ -324,7 +324,7 @@ var createOrGetTerminal = (function() {
         },
         'su': function(terminal, commandArguments) {
             if (commandArguments.length > 0) {
-                window.location.href = "/login.html?type=" + encodeURIComponent(commandArguments[0]);
+                parent.window.location.href = "/login.html?type=" + encodeURIComponent(commandArguments[0]);
             } else {
                 terminal.output("required user");
             }
