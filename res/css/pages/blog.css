@@ -58,11 +58,6 @@ pre {
     text-justify: inter-word;
 }
 
-
-@media (max-width: 455px) {
-
-}
-
 @media (max-width: 500px) {
     #content-container > *,
     #content-container img {
@@ -80,6 +75,10 @@ pre {
 @media (max-width: 900px) {
     .social-logo {
         font-size: 5vw;
+    }
+
+    .socials-container > #logo {
+        width: 12vw;
     }
 }
 

@@ -2,6 +2,7 @@
     var overviewContainer = document.getElementById("overview-container");
     var contentContainer = document.getElementById("content-container");
     var loadingContainer = document.getElementById("loading-container");
+    var logoContainer = document.getElementById("logo");
     loadingContainer.style.display = "flex";
 
     var baseUrl = "/blog.html";
@@ -9,7 +10,7 @@
     var blogPosts = {};
 
     // In case we are embedded in an iframe
-    document.domain = window.location.host;
+    document.domain = window.location.host.split(":")[0];
 
     function getHeaderData(blogPost, imageKey, metadataKey, titleKey) {
         return {
@@ -156,6 +157,7 @@
             loadingContainer.style.display = "none";
             contentContainer.style.display = "none";
             overviewContainer.style.display = "flex";
+            logoContainer.style.display = "block";
         } else {
             overviewContainer.style.display = "none";
             contentContainer.style.display = "none";
@@ -165,6 +167,7 @@
             if (data != null) {
                 renderFullBlogPost(slug, JSON.parse(data));
                 loadingContainer.style.display = "none";
+                logoContainer.style.display = "none";
             } else {
                 fetch("/res/data/blogs/" + slug + ".json")
                     .then(function(response) {
@@ -176,8 +179,10 @@
                     })
                     .then(function(data) {
                         renderFullBlogPost(slug, data);
-                        window.sessionStorage.setItem(slug, JSON.stringify(data));
                         loadingContainer.style.display = "none";
+                        logoContainer.style.display = "none";
+                        window.sessionStorage.setItem(slug, JSON.stringify(data));
+
                     })
                     .catch(renderGenericError);
             }

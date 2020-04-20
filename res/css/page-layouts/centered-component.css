@@ -11,6 +11,10 @@ body, html, .centered-component {
     align-items: center;
 }
 
+.centered-component > * {
+    z-index: 3;
+}
+
 .centered-component.vertical {
     flex-direction: column;
 }
