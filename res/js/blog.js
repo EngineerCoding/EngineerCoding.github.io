@@ -3,7 +3,9 @@
     var contentContainer = document.getElementById("content-container");
     var loadingContainer = document.getElementById("loading-container");
     var logoContainer = document.getElementById("logo");
+    var linkLogo = document.getElementById("link");
     loadingContainer.style.display = "flex";
+    linkLogo.style.display = "none";
 
     var baseUrl = "/blog.html";
 
@@ -11,6 +13,41 @@
 
     // In case we are embedded in an iframe
     document.domain = window.location.host.split(":")[0];
+
+    // Copy to button logic
+    function setCurrentSlug(slug) {
+        if (slug) {
+            linkLogo.setAttribute("title", "https://api.ameling.dev/opengraph/" + slug);
+        } else {
+            linkLogo.setAttribute("title", "");
+        }
+    }
+
+    linkLogo.addEventListener("click", function() {
+        var url = this.getAttribute("title");
+        if (url) {
+            if (window.navigator.clipboard) {
+                window.navigator.clipboard.writeText(url)
+                    .then(function() {
+                        alert("Copied to clipboard!");
+                    });
+            } else {
+                var textArea = document.createElement("textarea");
+                textArea.value = url;
+                // Avoid scrolling
+                textArea.style.bottom = "100%";
+                textArea.style.left = 0;
+                textArea.style.position = "fixed";
+
+                document.body.appendChild(textArea);
+                textArea.focus();
+                textArea.select();
+                document.execCommand("copy");
+                document.body.removeChild(textArea);
+                alert("Copied to clipboard!");
+            }
+        }
+    });
 
     function getHeaderData(blogPost, imageKey, metadataKey, titleKey) {
         return {
@@ -158,16 +195,19 @@
             contentContainer.style.display = "none";
             overviewContainer.style.display = "flex";
             logoContainer.style.display = "block";
+            setCurrentSlug(null);
         } else {
             overviewContainer.style.display = "none";
             contentContainer.style.display = "none";
             loadingContainer.style.display = "flex";
             var slug = decodeURIComponent(window.location.hash.substring(1));
+            setCurrentSlug(slug);
             var data = window.sessionStorage.getItem(slug);
             if (data != null) {
                 renderFullBlogPost(slug, JSON.parse(data));
                 loadingContainer.style.display = "none";
                 logoContainer.style.display = "none";
+                linkLogo.style.display = "block";
             } else {
                 fetch("/res/data/blogs/" + slug + ".json")
                     .then(function(response) {
@@ -181,8 +221,8 @@
                         renderFullBlogPost(slug, data);
                         loadingContainer.style.display = "none";
                         logoContainer.style.display = "none";
+                        linkLogo.style.display = "block";
                         window.sessionStorage.setItem(slug, JSON.stringify(data));
-
                     })
                     .catch(renderGenericError);
             }

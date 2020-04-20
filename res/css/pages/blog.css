@@ -58,6 +58,11 @@ pre {
     text-justify: inter-word;
 }
 
+.social-logo.share-link {
+    position: relative;
+    left: 1.2em;
+}
+
 @media (max-width: 500px) {
     #content-container > *,
     #content-container img {
@@ -75,6 +80,10 @@ pre {
 @media (max-width: 900px) {
     .social-logo {
         font-size: 5vw;
+    }
+
+    .social-logo.share-link {
+        left: 1.3em;
     }
 
     .socials-container > #logo {
