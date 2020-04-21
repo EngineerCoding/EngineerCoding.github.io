@@ -17,8 +17,10 @@
     // Copy to button logic
     function setCurrentSlug(slug) {
         if (slug) {
+            linkLogo.style.display = "block";
             linkLogo.setAttribute("title", "https://api.ameling.dev/opengraph/" + slug);
         } else {
+            linkLogo.style.display = "none";
             linkLogo.setAttribute("title", "");
         }
     }
@@ -207,7 +209,6 @@
                 renderFullBlogPost(slug, JSON.parse(data));
                 loadingContainer.style.display = "none";
                 logoContainer.style.display = "none";
-                linkLogo.style.display = "block";
             } else {
                 fetch("/res/data/blogs/" + slug + ".json")
                     .then(function(response) {
@@ -221,7 +222,6 @@
                         renderFullBlogPost(slug, data);
                         loadingContainer.style.display = "none";
                         logoContainer.style.display = "none";
-                        linkLogo.style.display = "block";
                         window.sessionStorage.setItem(slug, JSON.stringify(data));
                     })
                     .catch(renderGenericError);
