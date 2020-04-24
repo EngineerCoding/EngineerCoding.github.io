@@ -1,0 +1,50 @@
+
+.floating-nav-button .pulse::before {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+
+    width: .1em;
+    height: .25em;
+    border-radius: 50%;
+    transform: scale(1);
+    content: "";
+}
+
+.stx-dark.floating-nav-button .pulse::before {
+    animation: pulse-stx-dark 2s infinite;
+}
+
+.stx-light.floating-nav-button .pulse::before {
+    animation: pulse-stx-light 2s infinite;
+}
+
+@keyframes pulse-stx-light {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(198, 149, 198, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(198, 149, 198, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(198, 149, 198, 0);
+    }
+}
+
+@keyframes pulse-stx-dark {
+    0% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(253, 150, 33, 0.7);
+    }
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(253, 150, 33, 0);
+    }
+    100% {
+        transform: scale(0.95);
+        box-shadow: 0 0 0 0 rgba(253, 150, 33, 0);
+    }
+}

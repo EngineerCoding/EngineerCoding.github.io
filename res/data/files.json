@@ -18,6 +18,7 @@
 
     { "path": "res/css/components/card.css", "type": "external" },
     { "path": "res/css/components/loading.css", "type": "external" },
+    { "path": "res/css/components/nav-pulse.css", "type": "external" },
     { "path": "res/css/components/terminal.css", "type": "external" },
     { "path": "res/css/pages/blog.css", "type": "external" },
     { "path": "res/css/pages/index.css", "type": "external" },

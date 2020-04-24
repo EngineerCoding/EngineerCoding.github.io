@@ -1,12 +1,29 @@
 (function() {
     var navCheckbox = document.getElementById("nav-button");
+    var navCheckboxLabel = document.querySelector("label[for=\"nav-button\"]");
+
     navCheckbox.addEventListener("click", function(event) {
         event.preventDefault();
+
         var input = this;
         setTimeout(function() {
             input.checked = !input.checked;
         }, 130);
+
+        navCheckboxLabel.children[0].classList.remove("pulse");
     });
+
+    // Initialize the pulse when the user has not been here before
+    if (window.localStorage && window.localStorage.getItem("init-nav") === null) {
+        var link = document.createElement("link");
+        link.type = "text/css";
+        link.rel = "stylesheet";
+        link.href = "/res/css/components/nav-pulse.css";
+        document.head.appendChild(link);
+
+        navCheckboxLabel.children[0].classList.add("pulse");
+        //window.localStorage.setItem("init-nav", "1");
+    }
 
     var entering = false;
 
