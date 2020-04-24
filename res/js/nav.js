@@ -22,7 +22,7 @@
         document.head.appendChild(link);
 
         navCheckboxLabel.children[0].classList.add("pulse");
-        //window.localStorage.setItem("init-nav", "1");
+        window.localStorage.setItem("init-nav", "1");
     }
 
     var entering = false;
