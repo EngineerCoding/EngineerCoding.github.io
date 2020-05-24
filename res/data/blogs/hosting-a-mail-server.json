@@ -5,7 +5,7 @@
     },
     {
         "type": "paragraph",
-        "content": "It came apparent that I actually am quite the cheapskate, because it is not that expensive to buy an external hard drive which can store all those emails. But that is simply not enough for my needs, because in the event a hardware failure, my data is lost again. So data redundancy is a real requirement for me, and simply buying another hard drive and using soft RAID-1 is also not enough for me. Even though this should catch hardware failure for my needs (do note that for larger scale data redundancy RAID-1 is not sufficient), this is still not enough as my hard disks would still burn up in the event of a fire. Therefore I decided to use a proven solution: gmail. Why I even would bother with setting up a mail server if I am using gmail? Simple, I wanted to send mail from own domain and learn about email in general: what protocols are used, how can customize this?"
+        "content": "It came apparent that I actually am quite the cheapskate, because it is not that expensive to buy an external hard drive which can store all those emails. But that is simply not enough for my needs, because in the event of a hardware failure, my data is lost again. So data redundancy is a real requirement for me, and simply buying another hard drive and using soft RAID-1 is also not enough for me. Even though this should catch hardware failure for my needs (do note that for larger scale data redundancy RAID-1 is not sufficient), this is still not enough as my hard disks would still burn up in the event of a fire. Therefore I decided to use a proven solution: gmail. Why I even would bother with setting up a mail server if I am using gmail? Simple, I wanted to send mail from own domain and learn about email in general: what protocols are used, how can customize this?"
     },
     {
         "type": "paragraph",
@@ -13,7 +13,7 @@
     },
     {
         "type": "paragraph",
-        "content": "How I envision this two-way relay to work, has been depicted in the figure below; which, at the time of writing, is the {% a README.md https://github.com/EngineerCoding/EmailHandler %} of the repository which eventually will support this functionality in full. While I will dedicate a blog post to that system when it has been finished, in short it will work based on metadata which sent to my gmail account embedded in the original email. Once email is received from this dedicated gmail account, the email is then reparsed and stripped of to send this back to the original sender."
+        "content": "How I envision this two-way relay to work, has been depicted in the figure below; which, at the time of writing, is the {% a README.md https://github.com/EngineerCoding/EmailHandler %} of the repository which eventually will support this functionality in full. While I will dedicate a blog post to that system when it has been finished, in short it will work based on metadata which is embedded in the emails forwarded to my gmail account. Once email is received from this dedicated gmail account, the email is then reparsed and stripped of to send this back to the original sender."
     },
     {
         "type": "image",
@@ -21,7 +21,7 @@
     },
     {
         "type": "paragraph",
-        "content": "I landed on postfix, an open source SMTP server developed by Wietse Venema who started this project at IBM Research and currently works at google. While this doesn’t proof anything to begin with, it is used as default Mail Transfer Agent (MTA) within Ubuntu. I installed using the following command (this also installed dependencies for SPF and DKIM, security mechanisms for email):"
+        "content": "I landed on postfix, an open source SMTP server developed by Wietse Venema who started this project at IBM Research and currently works at gGogle. While this doesn’t proof anything to begin with, it is used as the default Mail Transfer Agent (MTA) within Ubuntu. I installed this using the following command (this also installs dependencies for SPF and DKIM, security mechanisms for email):"
     },
     {
         "type": "code",
@@ -33,7 +33,7 @@
     },
     {
         "type": "paragraph",
-        "content": "When I think web combined with security, I think about SSL. I obviously used {% a \"Let's Encrypt\" https://letsencrypt.org/ %} certificate for the sake of simplicity. Do recall however that I already have issued a certificate for this very website, which means that I cannot reuse those certificates. While the I want to my email addresses to look like something@ameling.dev, I actually have dedicated a subdomain mail.ameling.dev as my mail servers' address. I already had certbot installed, and ran {% code 'sudo certbot certonly --standalone -d mail.ameling.dev' %} to retrieve my certificates (AFTER pointing the mail subdomain to my raspberry pi's address). Then we can add those certificates to postfix by running the following commands:"
+        "content": "When I think web combined with security, I think about SSL. I obviously used {% a \"Let's Encrypt\" https://letsencrypt.org/ %} certificate for the sake of simplicity. Do recall however that I already have issued a certificate for this very website, which means that I cannot reuse those certificates. While I want to my email addresses to look like something@ameling.dev, I actually have dedicated a subdomain mail.ameling.dev as my mail servers' address. I already had certbot installed, and ran {% code 'sudo certbot certonly --standalone -d mail.ameling.dev' %} to retrieve my certificates (AFTER pointing the mail subdomain to my raspberry pi's address). Then we can add those certificates to postfix by running the following commands:"
     },
     {
         "type": "code",
@@ -49,7 +49,7 @@
     },
     {
         "type": "paragraph",
-        "content": "While most of the configuration is done at this point, there are still some server side configurations to be applied (to the file {% code /etc/postfix/main.cf %}:"
+        "content": "While most of the configuration is done at this point, there are still some server side configurations to be applied (to the file {% code /etc/postfix/main.cf %}):"
     },
     {
         "type": "ol",
@@ -73,7 +73,7 @@
     },
     {
         "type": "paragraph",
-        "content": "I haven't gotten into how to setup SPF and DKIM because other people can do that way better than me. This post should at the very least gotten you started real quickly, and don't be afraid to email me on any @ameling.dev email address for advice on how to fix your issues."
+        "content": "I haven't gotten into how to setup SPF and DKIM because other people can do that way better than me. This post should at the very least have gotten you started real quickly, and don't be afraid to email me on any @ameling.dev email address for advice on how to fix your issues."
     },
     {
         "type": "ol",
