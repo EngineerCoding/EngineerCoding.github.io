@@ -73,7 +73,7 @@
             overviewContainer.appendChild(node);
             // Wait for the images to load
             var loadedCount = 0;
-            var images = overviewContainer.getElementsByTagName("img");
+            var images = node.getElementsByTagName("img");
             for (var i = 0; i < images.length; i++) {
                 images[i].addEventListener("load", function(evt) {
                     loadedCount += 1;
