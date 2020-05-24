@@ -85,7 +85,10 @@
         });
     }
 
-    function renderGenericError() {
+    function renderGenericError(e) {
+        console.warn(e);
+        contentContainer.style.display = "none";
+
         var loadingSpinner = loadingContainer.querySelector(".loading");
         loadingContainer.removeChild(loadingSpinner);
         var error = document.createElement("h1");
@@ -96,14 +99,14 @@
     }
 
     function renderAction(action) {
-        var actionComponents = action.match(/'[\s\w/:%=?\.\[\]@]+'|[\w/:%=?\.\[\]@]+/g);
+        var actionComponents = action.match(/'["\s\w/:%=?\.\[\]@-]+'|"['\s\w/:%=?\.\[\]@-]+"|[\w/:%=?\.\[\]@-]+/g);
         if (actionComponents == null) {
             throw new Error("No action found!");
         }
 
         actionComponents = actionComponents.map(function(component) {
             component = component.trim();
-            if (component.startsWith("'") && component.endsWith("'")) {
+            if ((component.startsWith("'") || component.startsWith("\"")) && (component.endsWith("'") || component.endsWith("\""))) {
                 return component.substring(1, component.length - 1);
             }
             return component;
@@ -182,6 +185,14 @@
         }
 
         var header = loadTemplate("bp-header", getHeaderData(blogPosts[slug], "image-source", "metadata", "title"));
+        if (blogPosts[slug].maxHeight) {
+            var images = header.getElementsByTagName("img");
+            for (var i = 0; i < images.length; i++) {
+                images[i].style.width = "auto";
+                images[i].style.maxHeight = blogPosts[slug].maxHeight;
+            }
+        }
+
         var childrenCount = header.children.length;
         for (var i = 0; i < childrenCount; i++) {
             contentContainer.appendChild(header.children[0]);

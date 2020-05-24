@@ -4,5 +4,12 @@
         "description": "The start of creating my own website, and hosting this on github pages. Diving into DNS is actually fun!",
         "published": 1584486071,
         "banner": "/res/img/engineercoding_github_io.png"
+    },
+    {
+        "title": "Hosting a mail server",
+        "description": "Hosting a mail server of my own, enabling capabilities beyond a regular mailserver",
+        "published": 1590353194,
+        "banner": "/res/img/postfix.jpeg",
+        "maxHeight": "400px"
     }
 ]

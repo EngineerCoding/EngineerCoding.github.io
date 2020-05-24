@@ -1,0 +1,85 @@
+[
+    {
+        "type": "paragraph",
+        "content": "Shortly after I had bought my domain name I wanted to setup my own mail server. I had an unused raspberry pi lying around, which I figured could use for just this purpose. Since I don't have a lot of hardware lying around which is unused, I am currently limited to the capacity of the SD card, minus the size of a headless Raspbian image. Since I like to use my email for archival purposes, this is a real problem."
+    },
+    {
+        "type": "paragraph",
+        "content": "It came apparent that I actually am quite the cheapskate, because it is not that expensive to buy an external hard drive which can store all those emails. But that is simply not enough for my needs, because in the event a hardware failure, my data is lost again. So data redundancy is a real requirement for me, and simply buying another hard drive and using soft RAID-1 is also not enough for me. Even though this should catch hardware failure for my needs (do note that for larger scale data redundancy RAID-1 is not sufficient), this is still not enough as my hard disks would still burn up in the event of a fire. Therefore I decided to use a proven solution: gmail. Why I even would bother with setting up a mail server if I am using gmail? Simple, I wanted to send mail from own domain and learn about email in general: what protocols are used, how can customize this?"
+    },
+    {
+        "type": "paragraph",
+        "content": "I ended up researching email and the used protocols, which ended up to be Simple Mail Transfer Protocol (SMTP), Post Office Protocol 3 (POP3) and Internet Message Access Protocol (IMAP). SMTP is the primary protocol which is used to transfer emails between SMTP servers, while the other protocols allow a client to connect to the server and download their old emails and receive new email. For my purpose, I want some form of email server which acts as a two-way proxy between receiver and my personal gmail so I don’t have to bother with storage concerns. This means that I needed to find a SMTP server which allow me to intercept emails."
+    },
+    {
+        "type": "paragraph",
+        "content": "How I envision this two-way relay to work, has been depicted in the figure below; which, at the time of writing, is the {% a README.md https://github.com/EngineerCoding/EmailHandler %} of the repository which eventually will support this functionality in full. While I will dedicate a blog post to that system when it has been finished, in short it will work based on metadata which sent to my gmail account embedded in the original email. Once email is received from this dedicated gmail account, the email is then reparsed and stripped of to send this back to the original sender."
+    },
+    {
+        "type": "image",
+        "source": "res/img/schematic_mail_handler.png"
+    },
+    {
+        "type": "paragraph",
+        "content": "I landed on postfix, an open source SMTP server developed by Wietse Venema who started this project at IBM Research and currently works at google. While this doesn’t proof anything to begin with, it is used as default Mail Transfer Agent (MTA) within Ubuntu. I installed using the following command (this also installed dependencies for SPF and DKIM, security mechanisms for email):"
+    },
+    {
+        "type": "code",
+        "content": "sudo DEBIAN_PRIORITY=low apt-get install postfix\napt-get install opendkim opendkim-tools postfix-policyd-spf-python postfix-pcre dovecat-common\nadduser postfix opendkim"
+    },
+    {
+        "type": "paragraph",
+        "content": "This command gets you a standard postfix server running which will happily accept emails. However, for me I had to apply additional steps since I am running this on a raspberry pi in my own network. The first step is that I had to forward port 25 in my router. Additionally, I had to enable port 25 for incoming connections on my raspberry pi's firewall ({% code 'ufw allow 25' %}). Now we have come at the point where we have to apply configuration, both in your DNS settings and in your postfix installation. First we will focus on the security of the postfix installation."
+    },
+    {
+        "type": "paragraph",
+        "content": "When I think web combined with security, I think about SSL. I obviously used {% a \"Let's Encrypt\" https://letsencrypt.org/ %} certificate for the sake of simplicity. Do recall however that I already have issued a certificate for this very website, which means that I cannot reuse those certificates. While the I want to my email addresses to look like something@ameling.dev, I actually have dedicated a subdomain mail.ameling.dev as my mail servers' address. I already had certbot installed, and ran {% code 'sudo certbot certonly --standalone -d mail.ameling.dev' %} to retrieve my certificates (AFTER pointing the mail subdomain to my raspberry pi's address). Then we can add those certificates to postfix by running the following commands:"
+    },
+    {
+        "type": "code",
+        "content": "sudo postconf -e 'smtpd_tls_cert_file = /etc/letsencrypt/live/<your.domain>/fullchain.pem'\nsudo postconf -e 'smtpd_tls_key_file = /etc/letsencrypt/live/<your.domain>/privkey.pem'"
+    },
+    {
+        "type": "paragraph",
+        "content": "To further harden the postfix installation, the following commands were run:"
+    },
+    {
+        "type": "code",
+        "content": "sudo postconf -e 'smtpd_sasl_type = dovecot'\nsudo postconf -e 'smtpd_sasl_path = private/auth'\nsudo postconf -e 'smtpd_sasl_local_domain ='\nsudo postconf -e 'smtpd_sasl_security_options = noanonymous'\nsudo postconf -e 'broken_sasl_auth_clients = yes'\nsudo postconf -e 'smtpd_sasl_auth_enable = yes'\nsudo postconf -e 'smtpd_recipient_restrictions = permit_sasl_authenticated,permit_mynetworks,reject_unauth_destination'\nsudo postconf -e 'smtp_tls_security_level = may'\nsudo postconf -e 'smtpd_tls_security_level = may'\nsudo postconf -e 'smtp_tls_note_starttls_offer = yes'\nsudo postconf -e 'smtpd_tls_loglevel = 1'\nsudo postconf -e 'smtpd_tls_received_header = yes'\nsudo postconf -e 'smtpd_helo_required = yes'\nsudo postconf -e 'smtpd_helo_restrictions = reject_non_fqdn_helo_hostname,reject_invalid_helo_hostname,reject_unknown_helo_hostname'\nsudo postconf -e 'disable_vrfy_command = yes'\nsudo postconf -e 'smtpd_delay_reject = yes'\nsudo postconf -e 'smtpd_recipient_restrictions = permit_sasl_authenticated,permit_mynetworks,reject_unauth_destination,reject_invalid_hostname,reject_non_fqdn_hostname,reject_non_fqdn_sender,reject_non_fqdn_recipient,reject_unknown_sender_domain,reject_rbl_client sbl.spamhaus.org,reject_rbl_client cbl.abuseat.org'"
+    },
+    {
+        "type": "paragraph",
+        "content": "While most of the configuration is done at this point, there are still some server side configurations to be applied (to the file {% code /etc/postfix/main.cf %}:"
+    },
+    {
+        "type": "ol",
+        "items": [
+            "The setting {% code myorigin %} was set to the domain I want mail server to look like, which in my case is {% code ameling.dev %}.",
+            "The setting {% code mydestinations %} should include the same domain as in the first step.",
+            "The settings {% code smtpd_banner %} and {% code myhostname %} must point to the true domain, which in my case is {% code mail.ameling.dev %}."
+        ]
+    },
+    {
+        "type": "paragraph",
+        "content": "The final configuration really depends on what you want to do with your mail server. For me I wanted to be able to catch all emails send to any @ameling.dev email address and process this. For this I had to point the {% code mailbox_command %} to my executable, and run the command {% code \"sudo postfix -e 'virtual_alias_maps = hash:/etc/postfix/virtual'\" %} and create the file {% code /etc/postfix/virtual %} which contains the single line {% code '@ameling.dev    catchall' %}."
+    },
+    {
+        "type": "paragraph",
+        "content": "Unfortunately we aren't just done yet, as we have to add DNS records for SPF, DKIM and DMARC which are protection mechanisms for email which you should definitely apply because this also influences your trustworthiness by other MTA's such as google. I will simply sum this up, do note that these should point to your mail subdomain (which in my case is mail):"
+    },
+    {
+        "type": "code",
+        "content": "mail   A   <IP>\nmail   CAA   0 issue letsencrypt.org\n_adsp._domainkey    TXT   dkim=all\nv=DMARC1;p=quarantine;adkim=r;aspf=r;rua=mailto:<SOME_ADMIN_MAIL_ADDRESS>;fo=1"
+    },
+    {
+        "type": "paragraph",
+        "content": "I haven't gotten into how to setup SPF and DKIM because other people can do that way better than me. This post should at the very least gotten you started real quickly, and don't be afraid to email me on any @ameling.dev email address for advice on how to fix your issues."
+    },
+    {
+        "type": "ol",
+        "items": [
+            "SPF: {% a https://www.howtoforge.com/postfix_spf https://www.howtoforge.com/postfix_spf %}",
+            "DKIM: {% a https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-dkim-with-postfix-on-debian-wheezy https://www.digitalocean.com/community/tutorials/how-to-install-and-configure-dkim-with-postfix-on-debian-wheezy %}"
+        ]
+    }
+]

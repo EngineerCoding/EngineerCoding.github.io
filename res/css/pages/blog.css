@@ -14,6 +14,11 @@ noscript .middle-header {
     width: 750px;
 }
 
+.image-container img {
+    display: block;
+    margin: auto;
+}
+
 .video-container {
     position: relative;
     padding-bottom: 36.25%;
@@ -35,6 +40,8 @@ ol, li {
 }
 
 pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
     padding: 2px;
 }
 
