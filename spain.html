@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html dir="ltr">
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+        <title>Wesley Ameling</title>
+
+        <link type="text/css" rel="stylesheet" href="/res/css/layout.css" />
+        <link type="text/css" rel="stylesheet" href="/res/css/page-layouts/centered-component.css" />
+        <link type="text/css" rel="stylesheet" href="/res/css/pages/spain.css" />
+        <link type="text/css" rel="stylesheet" href="/res/css/syntax-light.css" />
+        <link type="text/css" rel="stylesheet" href="/res/css/syntax-dark.css" />
+
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+        <script type="text/javascript" src="/res/js/generic.js" defer></script>
+        <script type="text/javascript" src="/res/js/terminal.js" defer></script>
+        <script type="text/javascript" src="/res/js/nav.js" defer></script>
+        <script type="text/javascript" src="/res/js/theme-switcher.js" defer></script>
+    </head>
+    <body>
+        <header class="enable-js">
+            <div class="stx-dark pointer icon-font">
+                <i class="fa fa-sun-o"></i>
+            </div>
+        </header>
+
+        <input type="checkbox" class="css-button-action-hack" id="nav-button"/>
+        <label for="nav-button" class="floating-nav-button stx-dark">
+            <span class="icon-font no-select stx-cnst">~</span>
+        </label>
+
+        <nav class="stx-light back">
+            <ul>
+                <li class="no-select current-path"><span class="stx-cnst">~</span><span class="stx-path">/spain.html</span></li>
+                <li><a href="/index.html"><span class="stx-cnst">~</span></a></li>
+                <li><a href="/blog.html"><span class="stx-cnst">~</span><span class="stx-path">/Blog</span></a></li>
+                <li><a href="/projects.html"><span class="stx-cnst">~</span><span class="stx-path">/Projects</span></a></li>
+                <li><a href="/career.html"><span class="stx-cnst">~</span><span class="stx-path">/Career</span></a></li>
+                <li><a href="/contact.html"><span class="stx-cnst">~</span><span class="stx-path">/Contact</span></a></li>
+            </ul>
+        </nav>
+
+        <main class="stx-dark back flex-rows centered-component">
+            <h1 class="my-0">Vakantie!</h1>
+            <h6 class="tm-0">Met mijn schatje <span class="stx-cnst">@</span> Empuriabrava</h6>
+            <div class="timer-container flex flex-columns scalable-font">
+                <div class="days">
+                    <div class="timer-component">
+                        <span></span>
+                    </div>
+                    <div class="timer-component-name">
+                        <span>days</span>
+                    </div>
+                </div>
+                <div class="timer-separator stx-cnst"><span>:</span></div>
+                <div class="hours">
+                    <div class="timer-component">
+                        <span></span>
+                    </div>
+                    <div class="timer-component-name">
+                        <span>hours</span>
+                    </div>
+                </div>
+                <div class="timer-separator stx-cnst"><span>:</span></div>
+                <div class="minutes">
+                    <div class="timer-component">
+                        <span></span>
+                    </div>
+                    <div class="timer-component-name">
+                        <span>minutes</span>
+                    </div>
+                </div>
+                <div class="timer-separator stx-cnst"><span>:</span></div>
+                <div class="seconds">
+                    <div class="timer-component">
+                        <span></span>
+                    </div>
+                    <div class="timer-component-name">
+                        <span>seconds</span>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <footer class="stx-dark">
+            <div class="copyright sticky-bottom scalable-font">
+                <span>Copyright &copy; <span id="copyright-year">2020</span> Wesley Ameling</span>
+            </div>
+            <div class="socials-container sticky-bottom">
+                <svg id="logo" viewBox="0 0 102.71 115.5" xmlns="http://www.w3.org/2000/svg" class="no-pointer-events">
+                    <defs>
+                        <style>.b{fill:none;}.b,.a{stroke:#fff;}.a{fill:#404040;}</style>
+                    </defs>
+                    <g>
+                        <path class="a" id="logo-path-a" d="M.5,1.26c.64,65,3.31,67.79,6.58,68,4,.21,8.44-33.77,12.76-33.38,4.15.38,2.68,34,6.21,34.38,3.05.35,6.07-4.85,17.46-69.46"/>
+                        <path class="b" id="logo-path-b" d="M24.34,48.31c56.28-20.66,73.92-14.16,77.22-.94,5.43,21.77-24.47,75.88-37.83,66.56C47.77,102.8,55,.81,50.6.5c-2.35-.17-2.13,29-14.18,51.56C31.5,61.28,26,66.64,21.71,69.87"/>
+                    </g>
+                </svg>
+                <a href="https://github.com/EngineerCoding" class="social-logo github" target="_blank" rel="noopener">
+                    <i class="fa fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/wesley-ameling/" class="social-logo linkedin" target="_blank" rel="noopener">
+                    <i class="fa fa-linkedin-square"></i>
+                </a>
+            </div>
+        </footer>
+        <script>
+            document.getElementById("copyright-year").innerText = (new Date()).getFullYear();
+
+            var targetDate = new Date(2021, 8, 5);
+
+            var daysComponent = document.querySelector(".days .timer-component span");
+            var hoursComponent = document.querySelector(".hours .timer-component span");
+            var minutesComponent = document.querySelector(".minutes .timer-component span");
+            var secondsComponent = document.querySelector(".seconds .timer-component span");
+
+            function pad(value) {
+                var valueStr = value.toString();
+                if (valueStr.length == 1) {
+                    valueStr = "0" +  valueStr;
+                }
+                return valueStr;
+            }
+
+            var intervalId = null;
+            function showDiff() {
+                var diff = targetDate - (new Date());
+                if (diff < 0) {
+                    diff = 0;
+                    clearInterval(intervalId);
+                }
+
+                daysComponent.innerText = pad(Math.floor(diff / (1000 * 60 * 60 * 24)));
+                hoursComponent.innerText = pad(Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+                minutesComponent.innerText = pad(Math.floor((diff % (1000 * 60 * 60 )) / (1000 * 60)));
+                secondsComponent.innerText = pad(Math.floor((diff % (1000 * 60)) / 1000));
+            }
+
+            intervalId = setInterval(showDiff, 1000);
+            showDiff();
+        </script>
+    </body>
+</html>
