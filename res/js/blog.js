@@ -205,22 +205,22 @@
 
     function renderPage() {
         if (window.location.hash.length === 0) {
-            loadingContainer.style.cssText = "display: none !important";
-            contentContainer.style.cssText = "display: none !important";
+            loadingContainer.style.display = "none";
+            contentContainer.style.display = "none";
             overviewContainer.style.display = "flex";
             logoContainer.style.display = "block";
             setCurrentSlug(null);
         } else {
-            overviewContainer.style.cssText = "display: none !important";
-            contentContainer.style.cssText = "display: none !important";
+            overviewContainer.style.display = "none";
+            contentContainer.style.display = "none";
             loadingContainer.style.display = "flex";
             var slug = decodeURIComponent(window.location.hash.substring(1));
             setCurrentSlug(slug);
             var data = window.sessionStorage.getItem(slug);
             if (data != null) {
                 renderFullBlogPost(slug, JSON.parse(data));
-                loadingContainer.style.cssText = "display: none !important";
-                logoContainer.style.cssText = "display: none !important";
+                loadingContainer.style.display = "none";
+                logoContainer.style.display = "none";
             } else {
                 fetch("/res/data/blogs/" + slug + ".json")
                     .then(function(response) {
@@ -232,8 +232,8 @@
                     })
                     .then(function(data) {
                         renderFullBlogPost(slug, data);
-                        loadingContainer.style.cssText = "display: none !important";
-                        logoContainer.style.cssText = "display: none !important";
+                        loadingContainer.style.display = "none";
+                        logoContainer.style.display = "none";
                         window.sessionStorage.setItem(slug, JSON.stringify(data));
                     })
                     .catch(renderGenericError);
