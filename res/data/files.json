@@ -37,8 +37,11 @@
     { "path": "res/favicon/favicon-32x32.png", "type": "external-image" },
 
     { "path": "res/img/404.png", "type": "external-image" },
+    { "path": "res/img/asp_nuget_package.png", "type": "external-image" }
     { "path": "res/img/engineercoding_github_io.jpg", "type": "external-image" },
     { "path": "res/img/index.png", "type": "external-image" },
+    { "path": "res/img/postfix.jpeg", "type": "external-image" },
+    { "path": "res/img/schematic_mail_handler.png", "type": "external-image" },
 
     { "path": "res/js/blog.js", "type": "external" },
     { "path": "res/js/crud.js", "type": "external" },

@@ -9,7 +9,7 @@ body, html {
     height: calc(100% - 80px);
 
     padding: 40px;
-    display: flex;
+    display: flex !important;
     align-content: flex-start;
 }
 

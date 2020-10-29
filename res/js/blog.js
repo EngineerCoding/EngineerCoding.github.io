@@ -55,14 +55,15 @@
         return {
             [imageKey]: blogPost.banner,
             [metadataKey]: (new Date(blogPost.published * 1000)).toLocaleString(),
-            [titleKey]: blogPost.title
+            [titleKey]: blogPost.title,
+            "card-description": blogPost.description
         };
     }
 
     function initOverviewItem(blogPost) {
         var node = loadTemplate("card", getHeaderData(blogPost, "card-image-source", "card-metadata", "card-title"));
 
-        var slug = blogPost.title.toLowerCase().replace(/\s/g, "-");
+        var slug = blogPost.title.toLowerCase().replace(/\s/g, "-").replace(/[^\w\-]/g, "");
         blogPosts[slug] = blogPost;
         node.addEventListener("click", function(event) {
             window.history.pushState(null, "", baseUrl + "#" + slug);
@@ -204,22 +205,22 @@
 
     function renderPage() {
         if (window.location.hash.length === 0) {
-            loadingContainer.style.display = "none";
-            contentContainer.style.display = "none";
+            loadingContainer.style.cssText = "display: none !important";
+            contentContainer.style.cssText = "display: none !important";
             overviewContainer.style.display = "flex";
             logoContainer.style.display = "block";
             setCurrentSlug(null);
         } else {
-            overviewContainer.style.display = "none";
-            contentContainer.style.display = "none";
+            overviewContainer.style.cssText = "display: none !important";
+            contentContainer.style.cssText = "display: none !important";
             loadingContainer.style.display = "flex";
             var slug = decodeURIComponent(window.location.hash.substring(1));
             setCurrentSlug(slug);
             var data = window.sessionStorage.getItem(slug);
             if (data != null) {
                 renderFullBlogPost(slug, JSON.parse(data));
-                loadingContainer.style.display = "none";
-                logoContainer.style.display = "none";
+                loadingContainer.style.cssText = "display: none !important";
+                logoContainer.style.cssText = "display: none !important";
             } else {
                 fetch("/res/data/blogs/" + slug + ".json")
                     .then(function(response) {
@@ -231,8 +232,8 @@
                     })
                     .then(function(data) {
                         renderFullBlogPost(slug, data);
-                        loadingContainer.style.display = "none";
-                        logoContainer.style.display = "none";
+                        loadingContainer.style.cssText = "display: none !important";
+                        logoContainer.style.cssText = "display: none !important";
                         window.sessionStorage.setItem(slug, JSON.stringify(data));
                     })
                     .catch(renderGenericError);

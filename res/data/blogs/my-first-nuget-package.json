@@ -1,0 +1,22 @@
+[
+    {
+        "type": "paragraph",
+        "content": "It has been quite a while since I have done anything with this website, while there is enough to do. Apart from the 404 pages, even the overview page of the blog can use some extra styling. Despite that, my focus was elsewhere and I created my first NuGet package, and uploaded it to the web. I am not actually going to dive into how to upload a NuGet package, because there are tonnes and tonnes of tutorials out there that show you how. And to be honest, it is more intuitive then you would expect."
+    },
+    {
+        "type": "paragraph",
+        "content": "While developing REST API's at work, I've exposed quite a lot of endpoints for colleagues to work with, but what I noticed is that some developers will make a lot of requests just to fill a single page with data. You might wonder whether then the API design was good, but for pages with a high information density this might be required. There is always the argument to create a single endpoint which just returns all the data which is needed for that particular page. While this works fine and is easy enough to do, is the front-end application still standalone then? Usually the answer is no, and in this day and age of Single Page Applications, the answer should be yes. This means that the server should not dictate what data to display on a single page, and let the SPA decide what endpoints to use for that."
+    },
+    {
+        "type": "paragraph",
+        "content": "For simple pages a few API calls are enough, but my colleague at some point had 28 API requests in a single page which were all independent and run on page load. I wanted to fix this, since the the application in question is hosted on a single Virtual Machine and cannot be scaled due to environment restrictions. So I wanted to take away the HTTP overhead to improve performance slightly: I wanted to batch the requests together. I am not the only one who wants to do that, but unfortunately ASP.Net Core does not have a built in way to do this, therefore I created a package of my own!"
+    },
+    {
+        "type": "paragraph",
+        "content": "{% a Ameling.BatchRequest https://github.com/EngineerCoding/BatchRequest %} is a NuGet package which integrates into Asp.Net Core to add the {% code IBatchRequestService %} and optionally a single endpoint: {% code /api/batch %}. One POSTs to the endpoint with an array of endpoint information such as the relative uri, http method and optionally the body, which are all then internally resolved and executed. This saves HTTP overhead and more importantly, cleans up the sequentially fired HTTP requests in a SPA. To install, run:"
+    },
+    {
+        "type": "code",
+        "content": "Install-Package Ameling.BatchRequest"
+    }
+]

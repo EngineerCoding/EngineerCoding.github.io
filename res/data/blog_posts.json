@@ -7,9 +7,16 @@
     },
     {
         "title": "Hosting a mail server",
-        "description": "Hosting a mail server of my own, enabling capabilities beyond a regular mailserver",
+        "description": "Hosting a mail server of my own, enabling capabilities beyond a regular mailserver.",
         "published": 1590353194,
         "banner": "/res/img/postfix.jpeg",
+        "maxHeight": "400px"
+    },
+    {
+        "title": "My first NuGet package!",
+        "description": "My first NuGet package to implement ASP.Net Core batch requests.",
+        "published": 1603930581,
+        "banner": "/res/img/asp_nuget_package.png",
         "maxHeight": "400px"
     }
 ]
