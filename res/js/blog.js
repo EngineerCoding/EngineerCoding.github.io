@@ -217,7 +217,11 @@
             var slug = decodeURIComponent(window.location.hash.substring(1));
             setCurrentSlug(slug);
             var data = window.sessionStorage.getItem(slug);
-            if (data != null) {
+
+            if (data === "404") {
+                window.location.href = "/blog.html"
+                window.sessionStorage.removeItem(slug);
+            } else if (data != null) {
                 renderFullBlogPost(slug, JSON.parse(data));
                 loadingContainer.style.display = "none";
                 logoContainer.style.display = "none";
@@ -225,6 +229,7 @@
                 fetch("/res/data/blogs/" + slug + ".json")
                     .then(function(response) {
                         if (!response.ok) {
+                            window.sessionStorage.setItem(slug, "404");
                             parent.window.location.href = "/404.html";
                             return new Promise(function() { });
                         }
