@@ -11,6 +11,13 @@
     max-width: 440px;
 }
 
+.card .card-banner {
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .card .card-banner img {
     max-height: 450px;
 }
