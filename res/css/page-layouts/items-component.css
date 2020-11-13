@@ -4,14 +4,7 @@
     overflow-y: auto;
 }
 
-.items-component-container.force {
-    height: 100vh;
-}
-
 .items-component {
-    width: calc(100% - 80px);
-    height: calc(100% - 80px);
-
     padding: 40px;
     display: flex;
     align-content: flex-start;
