@@ -1,5 +1,5 @@
 
-body, html {
+.items-component-container {
     width: 100%;
     overflow-y: auto;
 }

@@ -38,7 +38,7 @@
         <script type="text/javascript" src="/res/js/template-loader.js" defer></script>
         <script type="text/javascript" src="/res/js/blog.js" defer></script>
     </head>
-    <body>
+    <body class="items-component-container">
         <template id="card">
             <div class="stx-light card back scalable-font pointer">
                 <div class="card-banner">
@@ -104,24 +104,26 @@
             </ul>
         </nav>
 
-        <noscript class="stx-dark back centered-component">
-            <div class="flex flex-rows scalable-font">
-                <h1 class="my-0 top-header"><span class="stx-cnst">J</span>ava<span class="stx-cnst">S</span>cript</h1>
-                <h1 class="my-0 middle-header">is disabled</h1>
-                <h1 class="my-0 bottom-header center-text">
-                    <a href="https://enable-javascript.com/" target="_blank" rel="nooponer" class="stx-path">Check how to enable</a>
-                </h1>
-            </div>
-        </noscript>
-
         <main id="overview-container" class="stx-dark back enable-js items-component wrap" style="display: none;">
         </main>
 
         <main id="content-container" class="stx-dark back enable-js items-component vertical scalable-font" style="display: none;">
         </main>
 
-        <div id="loading-container" class="stx-dark back enable-js centered-component scalable-font" style="display: none;">
-            <div class="loading"></div>
+        <div class="centered-component-container fixed">
+            <noscript class="stx-dark back centered-component">
+                <div class="flex flex-rows scalable-font">
+                    <h1 class="my-0 top-header"><span class="stx-cnst">J</span>ava<span class="stx-cnst">S</span>cript</h1>
+                    <h1 class="my-0 middle-header">is disabled</h1>
+                    <h1 class="my-0 bottom-header center-text">
+                        <a href="https://enable-javascript.com/" target="_blank" rel="nooponer" class="stx-path">Check how to enable</a>
+                    </h1>
+                </div>
+            </noscript>
+
+            <div id="loading-container" class="stx-dark back enable-js centered-component scalable-font" style="display: none;">
+                <div class="loading"></div>
+            </div>
         </div>
 
         <footer class="stx-dark">

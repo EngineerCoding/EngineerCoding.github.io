@@ -1,8 +1,15 @@
 
-body, html, .centered-component {
+.centered-component-container, .centered-component {
     width: 100%;
-    height: 100%;
-    overflow-y: auto;
+    height: 100vh;
+    overflow-y: auto
+}
+
+.centered-component-container.fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    pointer-events: none;
 }
 
 .centered-component {
