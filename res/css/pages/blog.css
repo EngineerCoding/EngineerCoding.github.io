@@ -7,13 +7,21 @@ noscript .middle-header {
     font-size: 6.2em;
 }
 
-#content-container > *,
-#content-container img {
-    margin-left: auto;
-    margin-right: auto;
+#content-container > * {
+    margin: auto;
     width: 750px;
 }
 
+#content-container > .banner-image {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
+
+#content-container > .banner-image > img {
+    max-width: 750px;
+}
+
+#content-container > .banner-image > img,
 .image-container img {
     display: block;
     margin: auto;
