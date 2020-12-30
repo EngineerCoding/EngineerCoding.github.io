@@ -13,6 +13,7 @@
 
 .card .card-banner {
     height: 90%;
+    margin: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -28,6 +29,10 @@
 
 .card .card-meta, .card .card-title {
     padding: 0 5px;
+}
+
+.card .card-description {
+    padding: 0 10px;
 }
 
 @media (max-width: 500px) {
